@@ -64,6 +64,53 @@ public class Card {
             }
         };
     }
+    
+    /**
+     * Get an abbreviated string representation of the card
+     * @return A string representation of the card.
+     */
+    public String toAbbrevString()
+    {
+		String string = "";
+
+		if(this.value <= 10 && this.value != 1)
+		{
+			string += this.value;
+		}
+		else
+		{
+			switch(this.value)
+			{
+			case 1:
+				string += "A";
+				break;
+			case 11:
+				string += "J";
+				break;
+			case 12:
+				string += "Q";
+				break;
+			case 13:
+				string += "K";
+				break;
+			}
+		}
+		switch(this.suite)
+		{
+		case 0:
+			string += "H";
+			break;
+		case 1:
+			string += "S";
+			break;
+		case 2:
+			string += "D";
+			break;
+		case 3:
+			string += "C";
+		}
+		return string;
+    }
 	
 	/**
 	 * Gets the string representation of the card. useful for debugging.

@@ -2,14 +2,15 @@ package strategicWar;
 
 import static org.junit.Assert.*;
 
-import org.junit.*;
+import org.junit.Test;
 
-class CardTest {
+public class CardTest {
 
 	@Test
-	void testToString() {
+	public void testToString() {
 		String cardName = "Queen of Hearts";
 		Card card = new Card(0,12);
-		assertTrue(cardName.compareTo(card.toString()));
+		assertTrue(cardName.compareTo(card.toString()) == 0);
 	}
+
 }
