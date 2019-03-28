@@ -55,6 +55,5 @@ public class HandTest {
 		}
 		Card c = hand.pickRandom();
 		assertTrue(hand.cardCount() == 3);
-	}
-
+	} 
 }

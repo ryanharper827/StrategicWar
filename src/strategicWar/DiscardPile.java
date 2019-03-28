@@ -72,5 +72,19 @@ public class DiscardPile {
 		}
 		return pile.remove(pile.size() - 1);
 	}
-
+	
+	/**
+	 * Returns a string representation of the DiscardPile. Shown as DiscardPile[]
+	 * with each card in plain words in the brackets.
+	 */
+	public String toString() {
+		String returnString = "DiscardPile[ ";
+		
+		for(Card c : pile) {
+			returnString = returnString + " [" + c.toString() + "] ";
+		}
+		
+		returnString = returnString + "]";
+		return returnString;
+	}
 }

@@ -56,4 +56,18 @@ public class Hand {
 		int i = r.nextInt(hand.size());
 		return hand.remove(i);
 	}
+	/**
+	 * Returns a string representation of the Hand. Shown as Hand[]
+	 * with each card in plain words in the brackets.
+	 */
+	public String toString() {
+		String returnString = "Hand[ ";
+		
+		for(Card c : hand) {
+			returnString = returnString + " [" + c.toString() + "] ";
+		}
+		
+		returnString = returnString + "]";
+		return returnString;
+	}
 }
