@@ -3,35 +3,50 @@ package strategicWar;
 import java.util.ArrayList;
 
 public class War extends Battle{
-	//TODO Implement getWinner override by using last added cards in arrays
-	ArrayList<Card> playerCards;
-	ArrayList<Card> aiCards;
-	//TODO Finish commenting methods
+	ArrayList<Card> playerPrizes;
+	ArrayList<Card> aiPrizes;
 	/**
 	 * Initializes the War object and places the player and
 	 * AI cards into their respective internal storage.
 	 * @param player Player card from the Battle that resulted in this War
 	 * @param ai AI card from the Battle that resulted in this War
 	 */
-	public War(Card player, Card ai) {
+	public War(Card player, Card ai, ArrayList<Card> playerPrizes, ArrayList<Card> aiPrizes) 
+	{
 		super(player, ai);
-		playerCards = new ArrayList<Card>();
-		playerCards.add(playerCard);
-		aiCards = new ArrayList<Card>();
-		playerCards.add(aiCard);
+		this.playerPrizes = playerPrizes;
+		this.aiPrizes = aiPrizes;
 	}
 	
-	public void addAdditional(Card player, Card ai) {
-		playerCards.add(player);
-		aiCards.add(ai);
+	/**
+	 * 
+	 * @param player Player's battle Card
+	 * @param ai AI's battle Card
+	 * @param playerPrizes Additional player prize Cards
+	 * @param aiPrizes Additional AI prize Cards 
+	 */
+	public void additionalWar(Card player, Card ai, ArrayList<Card> playerPrizes, ArrayList<Card> aiPrizes) 
+	{
+		this.playerPrizes.add(this.playerCard);
+		this.aiPrizes.add(this.aiCard);
+		this.playerPrizes.addAll(playerPrizes);
+		this.aiPrizes.addAll(aiPrizes);
+		this.aiCard = ai;
+		this.playerCard = player;
 	}
 
 	
+	/**
+	 * Get all Cards from the War
+	 */
 	@Override
-	public ArrayList<Card> getCards() {
+	public ArrayList<Card> getCards() 
+	{
 		ArrayList<Card> returnCards = new ArrayList<Card>();
-		returnCards.addAll(playerCards);
-		returnCards.addAll(aiCards);
+		returnCards.add(this.aiCard);
+		returnCards.add(this.playerCard);
+		returnCards.addAll(this.playerPrizes);
+		returnCards.addAll(this.aiPrizes);
 		return returnCards;
 	}
 }

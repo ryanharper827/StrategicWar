@@ -19,7 +19,7 @@ public class Battle {
 	/**
 	 * Calculates the winner of the Battle, where 0 is a win 
 	 * for the AI and 1 is a win for the Player
-	 * @return Returns 0 for AI win, 1 for player win
+	 * @return Returns 0 for AI win, 1 for player win and 2 for War
 	 */
 	public int getWinner() {
 		if(playerCard.getValue() == aiCard.getValue()) {
