@@ -1,0 +1,17 @@
+#title-label {
+	-fx-font: 100px Tahoma;
+	
+}
+
+#diff-label {
+	-fx-font: 30px Tahoma;
+	-fx-text-fill: white;
+}
+
+.button {
+	-fx-font: 30px Tahoma;
+}
+
+.label {
+	-fx-font: 30px Tahoma;
+}
