@@ -1,4 +1,4 @@
-package strategicWar;
+package strategicwar;
 
 import static org.junit.Assert.*;
 

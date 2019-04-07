@@ -1,4 +1,4 @@
-package strategicWar;
+package strategicwar;
 
 import java.util.ArrayList;
 import java.util.Arrays;
