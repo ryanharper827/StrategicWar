@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Pane prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #d1cfcf;" BorderPane.alignment="CENTER">
+         <children>
+            <Button layoutX="927.0" layoutY="6.0" mnemonicParsing="false" text="Menu">
+               <font>
+                  <Font name="Avenir Next Bold" size="14.0" />
+               </font></Button>
+            <Label fx:id="playerScoreLabel" layoutX="283.0" layoutY="-5.0" prefHeight="38.0" prefWidth="191.0" text="Player: 52">
+               <font>
+                  <Font name="Avenir Next Bold" size="36.0" />
+               </font>
+            </Label>
+            <Label fx:id="computerScoreLabel" layoutX="531.0" layoutY="-5.0" prefHeight="52.0" prefWidth="252.0" text="Computer: 52">
+               <font>
+                  <Font name="Avenir Next Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-image: url('/resources/background.jpg');" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="pHandImage0" fitHeight="193.0" fitWidth="137.0" layoutX="154.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/jack_of_spades2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pHandImage1" fitHeight="193.0" fitWidth="137.0" layoutX="294.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/2_of_hearts.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pHandImage2" fitHeight="193.0" fitWidth="137.0" layoutX="435.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/4_of_clubs.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pHandImage3" fitHeight="193.0" fitWidth="137.0" layoutX="575.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/7_of_clubs.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pHandImage4" fitHeight="193.0" fitWidth="137.0" layoutX="714.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/10_of_diamonds.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pPlayedImage" fitHeight="193.0" fitWidth="137.0" layoutX="596.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/king_of_spades2.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cPlayedImage" fitHeight="193.0" fitWidth="137.0" layoutX="273.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/ace_of_hearts.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pDeckImage" fitHeight="193.0" fitWidth="137.0" layoutX="853.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/card_back.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pDiscardImage" fitHeight="193.0" fitWidth="137.0" layoutX="14.0" layoutY="501.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/card_back.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="pDeckLabel" layoutX="903.0" layoutY="598.0" text="52" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="pDiscardLabel" layoutX="64.0" layoutY="598.0" text="52" textFill="WHITE">
+               <font>
+                  <Font name="Avenir Next Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="11.0" layoutY="458.0" text="Discard Pile">
+               <font>
+                  <Font name="Avenir Next Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="889.0" layoutY="458.0" text="Deck">
+               <font>
+                  <Font name="Avenir Next Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="aHandImage0" fitHeight="193.0" fitWidth="137.0" layoutX="154.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/card_back.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="aHandImage1" fitHeight="193.0" fitWidth="137.0" layoutX="294.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/card_back.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="aHandImage2" fitHeight="193.0" fitWidth="137.0" layoutX="435.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/card_back.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="aHandImage3" fitHeight="193.0" fitWidth="137.0" layoutX="575.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/card_back.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="aHandImage4" fitHeight="193.0" fitWidth="137.0" layoutX="714.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/card_back.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="victoryLabel" layoutX="406.0" layoutY="321.0" text="Computer Wins!" textAlignment="CENTER">
+               <font>
+                  <Font name="Avenir Next Bold" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="cPrizeImage0" fitHeight="193.0" fitWidth="137.0" layoutX="132.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/ace_of_spades.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cPrizeImage1" fitHeight="193.0" fitWidth="137.0" layoutX="88.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/4_of_diamonds.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cPrizeImage2" fitHeight="193.0" fitWidth="137.0" layoutX="29.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/2_of_clubs.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pPrizeImage0" fitHeight="193.0" fitWidth="137.0" layoutX="737.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/6_of_spades.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pPrizeImage1" fitHeight="193.0" fitWidth="137.0" layoutX="780.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/6_of_hearts.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="pPrizeImage2" fitHeight="193.0" fitWidth="137.0" layoutX="837.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/Cards/3_of_diamonds.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </center>
+</BorderPane>

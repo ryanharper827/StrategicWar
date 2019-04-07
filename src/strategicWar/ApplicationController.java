@@ -8,9 +8,11 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
 
+
 public class ApplicationController extends Application {
-    private Scene mainScene;
-    private Scene gameScene;
+    private static Stage stage;
+    private static Scene mainScene;
+    private static Scene gameScene;
 
     @FXML
     private Pane firstPane;
@@ -20,16 +22,19 @@ public class ApplicationController extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-        this.mainScene = new Scene(root);
-        primaryStage.setTitle("Strategic War");
-        primaryStage.setScene(this.mainScene);
-        primaryStage.show();
+        stage = primaryStage;
+        Parent main = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
+        Parent game = FXMLLoader.load(getClass().getResource("GameScene.fxml"));
+        mainScene = new Scene(main);
+        gameScene = new Scene(game);
+        stage.setTitle("Strategic War");
+        stage.setScene(mainScene);
+        stage.show();
     }
 
     public static void main(String args[])
     {
-        launch(args);
+        Application.launch(ApplicationController.class, args);
     }
 
     public void playGamePressed()
@@ -67,7 +72,8 @@ public class ApplicationController extends Application {
     private void startGame(int difficulty)
     {
         System.out.println("starting game with " + difficulty + " level of difficulty");
+        //TODO: add GameControllerInitialization
         //this.gameController.Start(difficulty);
+        ApplicationController.stage.setScene(ApplicationController.gameScene);
     }
-
 }
