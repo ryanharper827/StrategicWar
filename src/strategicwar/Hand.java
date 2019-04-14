@@ -45,8 +45,14 @@ public class Hand {
 	public Card selectCard(int i) {
 		return hand.remove(i);
 	}
-	
-	
+
+	/**
+	 * Take a number from 0 to 4 and returns that cards numeric value
+	 * @param i the card number (0 to 4)
+	 * @return The Card value corresponding to i
+	 */
+	public int getCardValue(int i){ return hand.get(i).getValue();}
+
 	/**
 	 * Picks a random card from the Hand, removes it and returns it.
 	 * @return A random card from the Hand
@@ -60,6 +66,7 @@ public class Hand {
 	 * Returns a string representation of the Hand. Shown as Hand[]
 	 * with each card in plain words in the brackets.
 	 */
+	@Override
 	public String toString() {
 		String returnString = "Hand[ ";
 		
