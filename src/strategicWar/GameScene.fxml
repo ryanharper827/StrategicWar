@@ -157,6 +157,31 @@
                   <Image url="@../resources/Cards/3_of_diamonds.png" />
                </image>
             </ImageView>
+            <Label fx:id="pHandSelectLabel0" layoutX="154.0" layoutY="576.0" prefHeight="44.0" prefWidth="133.0" text="Click to Select" textAlignment="CENTER" textFill="#00ff3c">
+               <font>
+                  <Font name="Avenir Next Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="pHandSelectLabel1" layoutX="294.0" layoutY="576.0" prefHeight="44.0" prefWidth="133.0" text="Click to Select" textAlignment="CENTER" textFill="#00ff3c">
+               <font>
+                  <Font name="Avenir Next Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="pHandSelectLabel2" layoutX="435.0" layoutY="576.0" prefHeight="44.0" prefWidth="133.0" text="Click to Select" textAlignment="CENTER" textFill="#00ff3c">
+               <font>
+                  <Font name="Avenir Next Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="pHandSelectLabel3" layoutX="575.0" layoutY="576.0" prefHeight="44.0" prefWidth="133.0" text="Click to Select" textAlignment="CENTER" textFill="#00ff3c">
+               <font>
+                  <Font name="Avenir Next Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label fx:id="pHandSelectLabel4" layoutX="714.0" layoutY="576.0" prefHeight="44.0" prefWidth="133.0" text="Click to Select" textAlignment="CENTER" textFill="#00ff3c">
+               <font>
+                  <Font name="Avenir Next Bold" size="19.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </center>
