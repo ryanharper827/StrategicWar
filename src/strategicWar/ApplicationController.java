@@ -10,9 +10,11 @@ import javafx.fxml.FXMLLoader;
 
 
 public class ApplicationController extends Application {
-    private static Stage stage;
-    private static Scene mainScene;
-    private static Scene gameScene;
+    private Stage stage;
+    private Scene mainScene;
+    private Scene gameScene;
+
+    private GameController gameController;
 
     @FXML
     private Pane firstPane;
@@ -23,18 +25,31 @@ public class ApplicationController extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-        Parent main = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-        Parent game = FXMLLoader.load(getClass().getResource("GameScene.fxml"));
-        mainScene = new Scene(main);
-        gameScene = new Scene(game);
-        stage.setTitle("Strategic War");
-        stage.setScene(mainScene);
-        stage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+        Parent main = fxmlLoader.load();
+        ApplicationController applicationController = fxmlLoader.getController();
+        fxmlLoader = new FXMLLoader(getClass().getResource("GameScene.fxml"));
+        Parent game = fxmlLoader.load();
+        GameController gameController = fxmlLoader.getController();
+        Scene mainScene = new Scene(main);
+        Scene gameScene = new Scene(game);
+        applicationController.initialize(primaryStage, mainScene, gameScene, gameController);
     }
 
     public static void main(String args[])
     {
         Application.launch(ApplicationController.class, args);
+    }
+
+    public void initialize(Stage stage, Scene mainScene, Scene gameScene, GameController gameController)
+    {
+        this.stage = stage;
+        this.mainScene = mainScene;
+        this.gameScene = gameScene;
+        this.gameController = gameController;
+        this.stage.setTitle("Strategic War");
+        this.stage.setScene(mainScene);
+        this.stage.show();
     }
 
     public void playGamePressed()
@@ -63,7 +78,7 @@ public class ApplicationController extends Application {
         this.startGame(0);
     }
 
-    public  void hardPressed()
+    public void hardPressed()
     {
         System.out.println("hard pressed");
         this.startGame(1);
@@ -72,8 +87,7 @@ public class ApplicationController extends Application {
     private void startGame(int difficulty)
     {
         System.out.println("starting game with " + difficulty + " level of difficulty");
-        //TODO: add GameControllerInitialization
-        //this.gameController.Start(difficulty);
-        ApplicationController.stage.setScene(ApplicationController.gameScene);
+        this.stage.setScene(this.gameScene);
+        this.gameController.start(difficulty);
     }
 }

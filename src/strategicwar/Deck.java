@@ -96,6 +96,21 @@ public class Deck {
 			return null;
 		}
 	}
+
+	/**
+	 * Draws the number of cards specified
+	 * @param count number of cards to draw
+	 * @return Card[] with drawn cards
+	 */
+	public Card[] drawCards(int count)
+	{
+		Card[] cards = new Card[count];
+		for(int i = 0; i < count; i++)
+		{
+			cards[i] = this.drawCard();
+		}
+		return cards;
+	}
 	
 	public String toString()
 	{
@@ -121,7 +136,7 @@ public class Deck {
 		int count = cards.length/2;
 		Deck[] decks = new Deck[2];
 		decks[0] = new Deck(Arrays.copyOfRange(cards, 0, count));
-		decks[1] = new Deck(Arrays.copyOfRange(cards, +1, cards.length));
+		decks[1] = new Deck(Arrays.copyOfRange(cards, count, cards.length));
 		return decks;
 	}
 	

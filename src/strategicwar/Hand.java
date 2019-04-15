@@ -1,5 +1,7 @@
 package strategicwar;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -35,7 +37,18 @@ public class Hand {
 	public void addCard(Card card) {
 		hand.add(card);
 	}
-	
+
+	/**
+	 * Adds an array of cards to the hand
+	 * @param cards
+	 */
+	public void addCards(Card[] cards)
+	{
+		for(int i = 0; i < cards.length; i++)
+		{
+			hand.add(cards[i]);
+		}
+	}
 	
 	/**
 	 * Takes a number from 0 to 4, removes and returns that Card.
@@ -52,6 +65,8 @@ public class Hand {
 	 * @return The Card value corresponding to i
 	 */
 	public int getCardValue(int i){ return hand.get(i).getValue();}
+
+	public Image getCardImage(int i){ return hand.get(i).getCardImage();}
 
 	/**
 	 * Picks a random card from the Hand, removes it and returns it.

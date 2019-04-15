@@ -1,5 +1,6 @@
 package strategicwar;
 
+import javafx.scene.image.Image;
 import java.util.Comparator;
 
 /**
@@ -9,6 +10,7 @@ import java.util.Comparator;
 public class Card {
 	private int suite;
 	private int value;
+	private Image cardImage;
 	
 	/**
 	 * Instantiate a new card.
@@ -19,6 +21,7 @@ public class Card {
 	{
 		this.suite = suite;
 		this.value = value;
+		this.cardImage = new Image(this.getImageURL());
 	}
 	
 	/**
@@ -38,6 +41,12 @@ public class Card {
 	{
 		return this.suite;
 	}
+
+	/**
+	 * Gets the Image for this card
+	 * @return Image of the card
+	 */
+	public Image getCardImage() { return this.cardImage; }
 	
     /**
      * Get Card value comparator
@@ -157,5 +166,53 @@ public class Card {
 			}
 		}
 		return value + " of " + suite;
+	}
+
+	/**
+	 * Gets the URL of the card image.
+	 * @return string URL of card image
+	 */
+	private String getImageURL()
+	{
+		String suite = "";
+		String value = "";
+		switch(this.suite)
+		{
+			case 0:
+				suite = "hearts";
+				break;
+			case 1:
+				suite = "spades";
+				break;
+			case 2:
+				suite = "diamonds";
+				break;
+			case 3:
+				suite = "clubs";
+		}
+
+		if(this.value <= 10 && this.value != 1)
+		{
+			value = ""+this.value;
+		}
+		else
+		{
+			switch(this.value)
+			{
+				case 1:
+					value = "ace";
+					break;
+				case 11:
+					value = "jack";
+					break;
+				case 12:
+					value = "queen";
+					break;
+				case 13:
+					value = "king";
+					break;
+			}
+		}
+		return "/resources/Cards/"+value + "_of_" + suite+".png";
 	}
 }

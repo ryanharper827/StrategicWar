@@ -42,4 +42,10 @@ public class Battle {
 		return cards;
 	}
 
+	public String toString()
+	{
+		return "Player: " + this.playerCard.toAbbrevString() + " AI:" +
+				this.aiCard.toAbbrevString() + " winner: " + this.getWinner();
+	}
+
 }
