@@ -1,5 +1,8 @@
 package strategicwar;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BlurType;
@@ -74,13 +77,14 @@ public class GameController {
         this.cHandImages[3] = this.cHandImage3;
         this.cHandImages[4] = this.cHandImage4;
         Deck mainDeck = new Deck(false);
-        System.out.println("Preshuffle: " + mainDeck.toString() + "\nCount: " + mainDeck.getSize());
+        //Took out unnecessary toString calls on mainDeck
+        System.out.println("Preshuffle: " + mainDeck + "\nCount: " + mainDeck.getSize());
         mainDeck = Deck.shuffleDeck(mainDeck);
-        System.out.println("Postshuffle: " + mainDeck.toString() + "\nCount: " + mainDeck.getSize());
+        System.out.println("Postshuffle: " + mainDeck + "\nCount: " + mainDeck.getSize());
         Deck[] decks = Deck.splitDeck(mainDeck);
         this.playerDeck = decks[0];
         this.aiDeck = decks[1];
-        System.out.println("Player Deck: " + this.playerDeck.toString() + " AI deck: " + this.aiDeck.toString());
+        System.out.println("Player Deck: " + this.playerDeck + " AI deck: " + this.aiDeck);
         System.out.println("Player count: " + this.playerDeck.getSize() + " AI count: " + this.aiDeck.getSize());
         this.playerHand = new Hand();
         this.aiHand = new Hand();
@@ -151,9 +155,56 @@ public class GameController {
                 break;
             case 2:
                 this.victoryLabel.setText("WAR!");
+                ArrayList<Card> playerPrizes = new ArrayList<Card>();
+            	ArrayList<Card> aiPrizes = new ArrayList<Card>();
+            	int playerCardCount = playerHand.cardCount();
+            	int aiCardCount = aiHand.cardCount();
+            	for(int i = 0; i < playerCardCount; i++) {
+            		playerPrizes.add(playerHand.pickRandom());
+            	}
+            	for(int i = 0; i < aiCardCount; i++) {
+            		aiPrizes.add(aiHand.pickRandom());
+            	}
+            	drawCards(playerDeck, playerPile, playerHand);            	
+            	drawCards(aiDeck, aiPile, aiHand);
+                warPhase(playerPrizes, aiPrizes);
                 break;
         }
-        //TODO: Determine victor or war, handle war
+        roundEndPhase();
+    }
+    /**
+     * WAR PHASE: Initiates a War object and determines a 
+     * winner or war condition (Recursive call is a possibility)
+     * @param aiPrizes 
+     * @param playerPrizes 
+     */
+    private void warPhase(ArrayList<Card> playerPrizes, ArrayList<Card> aiPrizes)
+    {
+    	System.out.println("War phase");
+    	victoryLabel.setText("");
+    	War war = new War(playerCard, aiCard, playerPrizes, aiPrizes);
+    	switch (war.getWinner())
+        {
+            case 0:
+                this.victoryLabel.setText("Computer Wins!");
+                break;
+            case 1:
+                this.victoryLabel.setText("Player Wins!");
+                break;
+            case 2:
+            	this.victoryLabel.setText("WAR!");
+            	for(int i = 0; i < 4; i++) {
+            		playerPrizes.add(playerHand.pickRandom());
+            	}
+            	for(int i = 0; i < 4; i++) {
+            		aiPrizes.add(aiHand.pickRandom());
+            	}
+            	drawCards(playerDeck, playerPile, playerHand);            	
+            	drawCards(aiDeck, aiPile, aiHand);
+                warPhase(playerPrizes, aiPrizes);
+                break;
+        }
+    	
     }
 
     /**
