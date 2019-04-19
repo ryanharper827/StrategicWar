@@ -14,8 +14,14 @@ public class War extends Battle{
 	public War(Card player, Card ai, ArrayList<Card> playerPrizes, ArrayList<Card> aiPrizes) 
 	{
 		super(player, ai);
-		this.playerPrizes = playerPrizes;
-		this.aiPrizes = aiPrizes;
+		this.playerPrizes = new ArrayList<Card>();
+		this.aiPrizes = new ArrayList<Card>();
+		for(Card c : playerPrizes) {
+			this.playerPrizes.add(c);
+		}
+		for(Card c : aiPrizes) {
+			this.aiPrizes.add(c);
+		}
 	}
 	
 	/**

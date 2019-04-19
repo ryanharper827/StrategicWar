@@ -207,7 +207,7 @@ public class GameController {
          this.playerPrizes.add(this.currentBattle.playerCard);
          this.aiPrizes.add(this.currentBattle.aiCard);
         }
-        if(this.playerHand.cardCount() > 2)
+        if(this.playerHand.cardCount() > NUM_WAR_PRIZES)
         {
             this.playerPrizes.add(this.playerHand.pickRandom());
             this.playerPrizes.add(this.playerHand.pickRandom());
@@ -248,6 +248,7 @@ public class GameController {
                 this.aiPrizes.add(this.aiHand.pickRandom());
             }
         }
+        //Clear battle card images?
         this.refreshPrizeImages();
         this.refreshHandImages();
         this.phase = GamePhase.PreWar;
@@ -279,6 +280,7 @@ public class GameController {
         }
         this.aiCard = null;
         this.playerCard = null;
+        //The following two lines are the problem
         this.playerPrizes.clear();
         this.aiPrizes.clear();
     	switch (this.currentWar.getWinner())
