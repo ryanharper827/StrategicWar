@@ -47,6 +47,7 @@ public class ApplicationController extends Application {
         this.mainScene = mainScene;
         this.gameScene = gameScene;
         this.gameController = gameController;
+        this.gameController.setDelegate(this);
         this.stage.setTitle("Strategic War");
         this.stage.setScene(mainScene);
         this.stage.show();
@@ -55,21 +56,31 @@ public class ApplicationController extends Application {
     public void playGamePressed()
     {
         System.out.println("play game pressed");
-        this.firstPane.setVisible(false);
-        this.difficultyPane.setVisible(true);
+        this.setDifficultyPaneVisible();
     }
 
     public void backPressed()
     {
         System.out.println("back pressed");
+        this.setMainPaneVisible();
+    }
+
+    private void setMainPaneVisible()
+    {
         this.difficultyPane.setVisible(false);
         this.firstPane.setVisible(true);
+    }
+
+    private void setDifficultyPaneVisible()
+    {
+        this.firstPane.setVisible(false);
+        this.difficultyPane.setVisible(true);
     }
 
     public void quitPressed()
     {
         System.out.println("quit pressed");
-        System.exit(0);
+        this.closeApplication();
     }
 
     public void easyPressed()
@@ -87,8 +98,24 @@ public class ApplicationController extends Application {
     private void startGame(int difficulty)
     {
         System.out.println("starting game with " + difficulty + " level of difficulty");
-        this.stage.setScene(this.gameScene);
+        this.transitionToGame();
         this.gameController.start(difficulty);
+    }
+
+    public void transitionToMenu()
+    {
+        this.stage.setScene(this.mainScene);
+        this.setMainPaneVisible();
+    }
+
+    public void transitionToGame()
+    {
+        this.stage.setScene(this.gameScene);
+    }
+
+    public  void closeApplication()
+    {
+        System.exit(0);
     }
 
 }

@@ -1,9 +1,16 @@
 package strategicwar;
 
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Random;
 
+import javafx.stage.Stage;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.effect.BlurType;
 import javafx.scene.effect.InnerShadow;
@@ -13,6 +20,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
 public class GameController {
+    private ApplicationController delegate;
     @FXML
     private Label pHandSelectLabel0, pHandSelectLabel1, pHandSelectLabel2, pHandSelectLabel3, pHandSelectLabel4,
             victoryLabel,promptLabel,playerScoreLabel,computerScoreLabel,pDiscardLabel,pDeckLabel;
@@ -28,6 +36,7 @@ public class GameController {
     private static final int NUM_WAR_PRIZES = 2;
 
     private WarAI ai;
+    private int currentDifficulty;
     private boolean playing;
     private Deck playerDeck,aiDeck;
     private Hand playerHand, aiHand;
@@ -45,6 +54,15 @@ public class GameController {
     private enum GamePhase{Draw, BattleSelection, Battle, PreWar, War, RoundEnd, GameOver}
     private GamePhase phase;
 
+    private Dialog gameOverMenu;
+    @FXML
+    private Label victorLabel;
+
+    public void setDelegate(ApplicationController delegate)
+    {
+        this.delegate = delegate;
+    }
+
     /**
      * Start the game
      * @param difficulty
@@ -53,6 +71,7 @@ public class GameController {
     {
         if(!this.playing)
         {
+            this.currentDifficulty = difficulty;
             switch (difficulty)
             {
                 case 1:
@@ -64,7 +83,7 @@ public class GameController {
             }
             this.playing = true;
             this.initialize();
-            this.drawPhase();
+           this.drawPhase();
         }
     }
 
@@ -73,6 +92,19 @@ public class GameController {
      */
     private void initialize()
     {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameOverMenu.fxml"));
+        loader.setController(this);
+        try
+        {
+            Parent root = loader.load();
+            this.gameOverMenu = new Dialog();
+            this.gameOverMenu.getDialogPane().setContent(root);
+        }
+        catch (IOException exception)
+        {
+            System.out.println("ERROR LOADING FXML: " + exception.toString());
+            System.exit(1);
+        }
         this.cardBackImage = new Image("/resources/Cards/card_back.png");
         this.pHandImages = new ImageView[5];
         this.pHandImages[0] = this.pHandImage0;
@@ -248,14 +280,24 @@ public class GameController {
                 this.aiPrizes.add(this.aiHand.pickRandom());
             }
         }
-        //Clear battle card images?
-        this.refreshPrizeImages();
-        this.refreshHandImages();
-        this.phase = GamePhase.PreWar;
-        this.aiCard = this.ai.selectBattleCard(this.aiHand);
-        System.out.println("AI selects: " + this.aiCard.toAbbrevString());
-        this.promptLabel.setText("Select a Card to Play");
-        this.setSelectionActive(true);
+        if (this.playerHand.cardCount() == 0)
+        {
+            this.gameOverPhase(0);
+        }
+        else if (this.aiHand.cardCount() == 0)
+        {
+            this.gameOverPhase(1);
+        }
+        else
+        {
+            this.refreshPrizeImages();
+            this.refreshHandImages();
+            this.phase = GamePhase.PreWar;
+            this.aiCard = this.ai.selectBattleCard(this.aiHand);
+            System.out.println("AI selects: " + this.aiCard.toAbbrevString());
+            this.promptLabel.setText("Select a Card to Play");
+            this.setSelectionActive(true);
+        }
     }
 
     /**
@@ -309,13 +351,6 @@ public class GameController {
      */
     private void roundEndPhase(int winner)
     {
-        //TODO: Clean up, check for victory condition
-        /*try {
-            Thread.sleep(2000);
-        }catch (java.lang.InterruptedException e)
-        {
-            System.out.println(e.toString());
-        }*/
         if(this.phase == GamePhase.Battle)
         {
             if(winner == 0)
@@ -339,16 +374,47 @@ public class GameController {
             }
             this.refreshPrizeImages();
         }
-        //this.pPlayedImage.setImage(null);
-        //this.cPlayedImage.setImage(null);
         this.refreshCounterLabels();
         this.phase = GamePhase.RoundEnd;
-        this.drawPhase();
+        if(this.getPlayerScore() == 52)
+        {
+            System.out.println("The Player Wins the Game!");
+            this.gameOverPhase(1);
+        }
+        else if (this.getComputerScore() == 52)
+        {
+            System.out.println("The Computer Wins the Game!");
+            this.gameOverPhase(0);
+        }
+        else
+        {
+            this.drawPhase();
+        }
     }
 
     private void gameOverPhase(int winner)
     {
+        this.playing = false;
         this.phase = GamePhase.GameOver;
+        if(winner == 0)
+        {
+            this.victorLabel.setText("YOU LOSE!");
+        }
+        else
+        {
+            this.victorLabel.setText("YOU WIN!");
+        }
+        this.gameOverMenu.show();
+    }
+
+    private int getPlayerScore()
+    {
+        return this.playerDeck.getSize() + this.playerHand.cardCount() + this.playerPile.cardCount();
+    }
+
+    private int getComputerScore()
+    {
+        return this.aiDeck.getSize() + this.aiHand.cardCount() + this.aiPile.cardCount();
     }
 
     private void refreshHandImages()
@@ -387,12 +453,32 @@ public class GameController {
 
     private void refreshCounterLabels()
     {
-        int playeScore = this.playerDeck.getSize() + this.playerHand.cardCount() + this.playerPile.cardCount();
-        int aiScore = this.aiDeck.getSize() + this.aiHand.cardCount() + this.aiPile.cardCount();
+        int playeScore = this.getPlayerScore();
+        int aiScore = this.getComputerScore();
         this.playerScoreLabel.setText("Player: " + playeScore);
         this.computerScoreLabel.setText("Computer: " + aiScore);
-        this.pDeckLabel.setText("" + this.playerDeck.getSize());
-        this.pDiscardLabel.setText("" + this.playerPile.cardCount());
+        if(this.playerDeck.getSize() > 0)
+        {
+            this.pDeckLabel.setText("" + this.playerDeck.getSize());
+            this.pDeckLabel.setVisible(true);
+            this.pDeckImage.setImage(this.cardBackImage);
+        }
+        else
+        {
+            this.pDeckLabel.setVisible(false);
+            this.pDeckImage.setImage(null);
+        }
+        if(this.playerPile.cardCount() > 0)
+        {
+            this.pDiscardLabel.setText("" + this.playerPile.cardCount());
+            this.pDiscardLabel.setVisible(true);
+            this.pDiscardImage.setImage(this.cardBackImage);
+        }
+        else
+        {
+            this.pDiscardLabel.setVisible(false);
+            this.pDiscardImage.setImage(null);
+        }
     }
 
     /**
@@ -542,26 +628,79 @@ public class GameController {
      * Handles when the mouse clicks the Quit Game 
      * menu option under File
      */
-    public void quitGamePressed() {
+    public void quitGamePressed()
+    {
     	System.out.println("quit game pressed");
-    	
+        Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to quit the game?",
+                ButtonType.NO, ButtonType.YES);
+        alert.showAndWait();
+        if(alert.getResult() == ButtonType.YES)
+        {
+            this.playing = false;
+            this.delegate.transitionToMenu();
+        }
     }
     
     /**
      * Handles when the mouse clicks the Quit Application 
      * menu option under File
      */
-    public void quitAppPressed() {
+    public void quitAppPressed()
+    {
     	System.out.println("quit app pressed");
-    	
+        Alert alert = new Alert(AlertType.CONFIRMATION, "Are you sure you want to close Strategic War?",
+                ButtonType.NO, ButtonType.YES);
+        alert.showAndWait();
+        if(alert.getResult() == ButtonType.YES)
+        {
+            this.delegate.closeApplication();
+        }
     }
     
     /**
      * Handles when the mouse clicks the About
      * menu option under Help
      */
-    public void aboutPressed() {
+    public void aboutPressed()
+    {
     	System.out.println("about pressed");
-    	
+    }
+
+
+    /**
+     * Handles when the mouse clicks the About
+     * menu option under Help
+     */
+    public void retryPressed()
+    {
+        System.out.println("retry pressed");
+        Stage s = (Stage) this.gameOverMenu.getDialogPane().getScene().getWindow();
+        s.close();
+        this.start(this.currentDifficulty);
+    }
+
+
+    /**
+     * Handles when the mouse clicks the About
+     * menu option under Help
+     */
+    public void menuPressed()
+    {
+        System.out.println("menu pressed");
+        //this.gameOverMenu.hide();
+        Stage s = (Stage) this.gameOverMenu.getDialogPane().getScene().getWindow();
+        s.close();
+        this.delegate.transitionToMenu();
+    }
+
+
+    /**
+     * Handles when the mouse clicks the About
+     * menu option under Help
+     */
+    public void quitMenuPressed()
+    {
+        System.out.println("qiot pressed");
+        this.delegate.closeApplication();
     }
 }

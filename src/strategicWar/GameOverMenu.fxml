@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="victorLabel" alignment="CENTER" layoutX="163.0" layoutY="49.0" prefHeight="70.0" prefWidth="274.0" text="YOU LOSE!" textAlignment="CENTER">
+         <font>
+            <Font name="Avenir Next Heavy" size="48.0" />
+         </font>
+      </Label>
+      <Button layoutX="244.0" layoutY="149.0" mnemonicParsing="false" onAction="#retryPressed" text="RETRY">
+         <font>
+            <Font name="Avenir Next Heavy" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="244.0" layoutY="209.0" mnemonicParsing="false" onAction="#menuPressed" prefHeight="51.0" prefWidth="113.0" text="MENU">
+         <font>
+            <Font name="Avenir Next Heavy" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="244.0" layoutY="269.0" mnemonicParsing="false" onAction="#quitMenuPressed" prefHeight="51.0" prefWidth="113.0" text="QUIT">
+         <font>
+            <Font name="Avenir Next Heavy" size="24.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

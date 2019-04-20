@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="778.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="strategicwar.GameController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="778.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="strategicwar.GameController">
    <center>
       <Pane prefHeight="712.0" prefWidth="1000.0" style="-fx-background-image: url('/resources/background.jpg');" BorderPane.alignment="CENTER">
          <children>
@@ -52,12 +52,12 @@
                   <Image url="@../resources/Cards/card_back.png" />
                </image>
             </ImageView>
-            <Label fx:id="pDeckLabel" layoutX="903.0" layoutY="598.0" text="52" textFill="WHITE">
+            <Label fx:id="pDeckLabel" layoutX="903.0" layoutY="598.0" prefHeight="35.0" prefWidth="31.5" text="52" textFill="WHITE">
                <font>
                   <Font name="Avenir Next Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="pDiscardLabel" layoutX="64.0" layoutY="598.0" text="52" textFill="WHITE">
+            <Label fx:id="pDiscardLabel" layoutX="64.0" layoutY="598.0" prefHeight="35.0" prefWidth="31.5" text="52" textFill="WHITE">
                <font>
                   <Font name="Avenir Next Bold" size="24.0" />
                </font>
@@ -97,7 +97,7 @@
                   <Image url="@../resources/Cards/card_back.png" />
                </image>
             </ImageView>
-            <Label fx:id="victoryLabel" alignment="CENTER" layoutX="405.0" layoutY="319.0" textAlignment="CENTER">
+            <Label fx:id="victoryLabel" alignment="CENTER" layoutX="405.0" layoutY="319.0" prefHeight="35.0" prefWidth="189.7" textAlignment="CENTER">
                <font>
                   <Font name="Avenir Next Bold" size="24.0" />
                </font>
