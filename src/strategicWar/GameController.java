@@ -537,4 +537,31 @@ public class GameController {
                 break;
         }
     }
+    
+    /**
+     * Handles when the mouse clicks the Quit Game 
+     * menu option under File
+     */
+    public void quitGamePressed() {
+    	System.out.println("quit game pressed");
+    	
+    }
+    
+    /**
+     * Handles when the mouse clicks the Quit Application 
+     * menu option under File
+     */
+    public void quitAppPressed() {
+    	System.out.println("quit app pressed");
+    	
+    }
+    
+    /**
+     * Handles when the mouse clicks the About
+     * menu option under Help
+     */
+    public void aboutPressed() {
+    	System.out.println("about pressed");
+    	
+    }
 }

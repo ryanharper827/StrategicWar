@@ -90,4 +90,5 @@ public class ApplicationController extends Application {
         this.stage.setScene(this.gameScene);
         this.gameController.start(difficulty);
     }
+
 }
