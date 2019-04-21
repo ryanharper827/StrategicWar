@@ -12,7 +12,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.media.AudioClip;
 
 
-
+/**
+ * A controller for the entire application. It processes the FXML files, 
+ * audio, and starts the JavaFX window.
+ * @authors ryanharper, jaredpeterson
+ *
+ */
 public class ApplicationController extends Application {
     private Stage stage;
     private Scene mainScene;
@@ -47,7 +52,13 @@ public class ApplicationController extends Application {
     {
         Application.launch(ApplicationController.class, args);
     }
-
+    /**
+     * Sets the music, 
+     * @param stage
+     * @param mainScene
+     * @param gameScene
+     * @param gameController
+     */
     public void initialize(Stage stage, Scene mainScene, Scene gameScene, GameController gameController)
     {
         this.stage = stage;

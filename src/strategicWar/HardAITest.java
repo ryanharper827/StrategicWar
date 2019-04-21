@@ -1,9 +1,14 @@
 package strategicwar;
 
 import static org.junit.Assert.*;
+
+import org.junit.Rule;
 import org.junit.Test;
 
 public class HardAITest {
+	@Rule
+	public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();
+	
     @Test
     public void testSelectBattleCard()
     {

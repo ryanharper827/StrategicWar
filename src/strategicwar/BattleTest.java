@@ -4,10 +4,14 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.Rule;
 import org.junit.Test;
 //TODO finish test construction
 public class BattleTest {
-
+	
+	@Rule
+	public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();
+	
 	@Test
 	public void testConstructor() {
 		Card player = new Card(1, 1);

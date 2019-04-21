@@ -4,9 +4,12 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
+import org.junit.Rule;
 import org.junit.Test;
 
 public class HandTest {
+	@Rule
+	public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();
 
 	@Test
 	public void testConstructor() {
@@ -19,7 +22,7 @@ public class HandTest {
 		Hand hand = new Hand();
 		ArrayList<Card> cards = new ArrayList<Card>();
 		for(int i = 0; i < 4; i++) {
-			cards.add(new Card(i,i));
+			cards.add(new Card(i,i + 1));
 		}
 		hand.initialize(cards);
 		assertTrue(hand.cardCount() == 4);
@@ -51,7 +54,7 @@ public class HandTest {
 	public void testPickRandom() {
 		Hand hand = new Hand();
 		for(int i = 0; i < 4; i++) {
-			hand.addCard(new Card(i,i));
+			hand.addCard(new Card(i,i + 1));
 		}
 		Card c = hand.pickRandom();
 		assertTrue(hand.cardCount() == 3);
