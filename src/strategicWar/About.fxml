@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="75.0" layoutY="14.0" text="ABOUT STRATEGIC WAR">
+         <font>
+            <Font name="Avenir Next Heavy" size="36.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="74.0" prefHeight="304.0" prefWidth="539.0" text="Strategic War was created by Ryan Harper and Jared Peterson as part of a class project for COP 5339.The project includes assets from the following sources:\nSound effects from freesound.org\ncard shuffle effect\nlink:https://freesound.org/people/Iamgiorgio/sounds/371349/\nmodified:NO\nlicense:https://creativecommons.org/publicdomain/zero/1.0/\nUI 'click' effect\n author: Paul Sinnett\nlink: https://freesound.org/people/Paul%20Sinnett/sounds/404015/\nmodified:YES\nlicense: https://creativecommons.org/licenses/by/3.0/\nSiren effect\n author: Npeo\nlink: https://freesound.org/people/Npeo/sounds/393806/\nmodified:YES\nlicense: https://creativecommons.org/licenses/by/3.0/\nExplosion effect\n author: Iwiploppenisse\nlink: https://freesound.org/people/Iwiploppenisse/sounds/156031/\nmodified:YES\nlicense: https://creativecommons.org/licenses/by/3.0/\nRifle effect\n author: 18hiltc\nlink: https://freesound.org/people/18hiltc/sounds/238242/\nmodified:YES\nlicense: https://creativecommons.org/licenses/by/3.0/\n\&quot;Dangerous\&quot; Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 3.0 License\nhttp://creativecommons.org/licenses/by/3.0/\n\&quot;Plans In Motion\&quot; Kevin MacLeod (incompetech.com)\nLicensed under Creative Commons: By Attribution 3.0 License\\nhttp://creativecommons.org/licenses/by/3.0/" textAlignment="CENTER" visible="false" wrapText="true">
+         <font>
+            <Font size="11.0" />
+         </font></Label>
+      <TextArea editable="false" layoutX="19.0" layoutY="66.0" prefHeight="293.0" prefWidth="564.0" text="Strategic War was created by Ryan Harper and Jared Peterson &#10;as part of a class project for COP 5339.&#10;&#10;The project includes assets from the following sources:&#10;&#10;Sound effects from freesound.org&#10;&#10;card shuffle effect&#10;link:https://freesound.org/people/Iamgiorgio/sounds/371349/&#10;modified:NO&#10;license:https://creativecommons.org/publicdomain/zero/1.0/&#10;&#10;UI 'click' effect &#10;author: Paul Sinnett&#10;link: https://freesound.org/people/Paul%20Sinnett/sounds/404015/&#10;modified:YES&#10;license: https://creativecommons.org/licenses/by/3.0/&#10;&#10;Siren effect &#10;author: Npeo&#10;link: https://freesound.org/people/Npeo/sounds/393806/&#10;modified:YES&#10;license: https://creativecommons.org/licenses/by/3.0/&#10;&#10;Explosion effect &#10;author: Iwiploppenisse&#10;link:https://freesound.org/people/Iwiploppenisse/sounds/156031/&#10;modified:YES&#10;license: https://creativecommons.org/licenses/by/3.0/&#10;&#10;Rifle effect&#10;author: 18hiltc&#10;link: https://freesound.org/people/18hiltc/sounds/238242/&#10;modified:YES&#10;license: https://creativecommons.org/licenses/by/3.0/&#10;&#10;Music&#10;&#10;&quot;Dangerous&quot; Kevin MacLeod (incompetech.com)&#10;Licensed under Creative Commons: By Attribution 3.0 License http://creativecommons.org/licenses/by/3.0/&#10;&#10;&quot;Plans In Motion&quot; Kevin MacLeod (incompetech.com)&#10;Licensed under Creative Commons: By Attribution 3.0 License&#10;http://creativecommons.org/licenses/by/3.0/" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextArea>
+      <Button layoutX="277.0" layoutY="360.0" mnemonicParsing="false" onAction="#okPressed" text="OK">
+         <font>
+            <Font name="Avenir Next Heavy" size="16.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

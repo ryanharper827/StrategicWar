@@ -3,6 +3,7 @@ package strategicwar;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -55,8 +56,17 @@ public class GameController {
     private GamePhase phase;
 
     private Dialog gameOverMenu;
+    private Dialog aboutMenu;
+
     @FXML
     private Label victorLabel;
+
+    private AudioClip rifleClip;
+    private AudioClip explosionClip;
+    private AudioClip sirenClip;
+    private AudioClip uiClip;
+    private AudioClip shuffleClip;
+
 
     public void setDelegate(ApplicationController delegate)
     {
@@ -92,13 +102,18 @@ public class GameController {
      */
     private void initialize()
     {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameOverMenu.fxml"));
-        loader.setController(this);
         try
         {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("GameOverMenu.fxml"));
+            loader.setController(this);
             Parent root = loader.load();
             this.gameOverMenu = new Dialog();
             this.gameOverMenu.getDialogPane().setContent(root);
+            loader = new FXMLLoader(getClass().getResource("About.fxml"));
+            loader.setController(this);
+            root = loader.load();
+            this.aboutMenu = new Dialog();
+            this.aboutMenu.getDialogPane().setContent(root);
         }
         catch (IOException exception)
         {
@@ -127,6 +142,13 @@ public class GameController {
         this.cPrizeImages[1] = this.cPrizeImage1;
         this.cPrizeImages[2] = this.cPrizeImage2;
         this.warLoop = false;
+        this.rifleClip = new AudioClip(getClass().getResource("../resources/sound/rifleshot.mp3").toExternalForm());
+        this.rifleClip.setVolume(.2d);
+        this.explosionClip = new AudioClip(getClass().getResource("../resources/sound/explosion.mp3").toExternalForm());
+        this.explosionClip.setVolume(.5d);
+        this.sirenClip = new AudioClip(getClass().getResource("../resources/sound/siren.mp3").toExternalForm());
+        this.shuffleClip = new AudioClip(getClass().getResource("../resources/sound/shuffle.mp3").toExternalForm());
+        this.uiClip = new AudioClip(getClass().getResource("../resources/sound/play_card.mp3").toExternalForm());
         this.playerPrizes = new ArrayList<Card>();
         this.aiPrizes = new ArrayList<Card>();
         Deck mainDeck = new Deck(false);
@@ -213,14 +235,17 @@ public class GameController {
         {
             case 0:
                 this.victoryLabel.setText("Computer Wins!");
+                this.explosionClip.play();
                 this.roundEndPhase(0);
                 break;
             case 1:
                 this.victoryLabel.setText("Player Wins!");
+                this.rifleClip.play();
                 this.roundEndPhase(1);
                 break;
             case 2:
                 this.victoryLabel.setText("WAR!");
+                this.sirenClip.play();
                 preWarPhase();
                 break;
         }
@@ -329,16 +354,19 @@ public class GameController {
         {
             case 0:
                 this.victoryLabel.setText("Computer Wins!");
+                this.explosionClip.play();
                 this.warLoop = false;
                 this.roundEndPhase(0);
                 break;
             case 1:
                 this.victoryLabel.setText("Player Wins!");
+                this.rifleClip.play();
                 this.warLoop = false;
                 this.roundEndPhase(1);
                 break;
             case 2:
             	this.victoryLabel.setText("WAR!");
+            	this.sirenClip.play();
             	this.warLoop = true;
                 this.preWarPhase();
                 break;
@@ -493,6 +521,7 @@ public class GameController {
         if(deck.getSize() < toDraw)
         {
             deck.addCards((pile.removeCards().toArray(new Card[pile.cardCount()])));
+            this.shuffleClip.play();
             if(deck.getSize() < toDraw)
             {
                 toDraw = deck.getSize();
@@ -552,6 +581,7 @@ public class GameController {
         }
         if (view != null && label != null)
         {
+            this.uiClip.play();
             InnerShadow shadow = new InnerShadow();
             shadow.setColor(Color.web("#ff0000"));//"#00ff3b"));
             shadow.setChoke(.4d);
@@ -664,6 +694,15 @@ public class GameController {
     public void aboutPressed()
     {
     	System.out.println("about pressed");
+        this.aboutMenu.show();
+    }
+
+    public void okPressed()
+    {
+        this.uiClip.play();
+        System.out.println("ok pressed");
+        Stage s = (Stage) this.aboutMenu.getDialogPane().getScene().getWindow();
+        s.hide();
     }
 
 
@@ -673,9 +712,10 @@ public class GameController {
      */
     public void retryPressed()
     {
+        this.uiClip.play();
         System.out.println("retry pressed");
         Stage s = (Stage) this.gameOverMenu.getDialogPane().getScene().getWindow();
-        s.close();
+        s.hide();
         this.start(this.currentDifficulty);
     }
 
@@ -686,10 +726,10 @@ public class GameController {
      */
     public void menuPressed()
     {
+        this.uiClip.play();
         System.out.println("menu pressed");
-        //this.gameOverMenu.hide();
         Stage s = (Stage) this.gameOverMenu.getDialogPane().getScene().getWindow();
-        s.close();
+        s.hide();
         this.delegate.transitionToMenu();
     }
 
@@ -700,7 +740,8 @@ public class GameController {
      */
     public void quitMenuPressed()
     {
-        System.out.println("qiot pressed");
+        this.uiClip.play();
+        System.out.println("quit pressed");
         this.delegate.closeApplication();
     }
 }

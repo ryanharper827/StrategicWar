@@ -4,15 +4,22 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.media.AudioClip;
+
 
 
 public class ApplicationController extends Application {
     private Stage stage;
     private Scene mainScene;
+    private AudioClip mainMusic;
     private Scene gameScene;
+    private AudioClip gameMusic;
+    private AudioClip uiClip;
 
     private GameController gameController;
 
@@ -45,6 +52,12 @@ public class ApplicationController extends Application {
     {
         this.stage = stage;
         this.mainScene = mainScene;
+        this.uiClip = new AudioClip(getClass().getResource("../resources/sound/play_card.mp3").toExternalForm());
+        this.mainMusic = new AudioClip(getClass().getResource("../resources/music/Dangerous.mp3").toExternalForm());
+        this.mainMusic.setCycleCount(AudioClip.INDEFINITE);
+        this.mainMusic.play();
+        this.gameMusic = new AudioClip(getClass().getResource("../resources/music/Plans_in_Motion.mp3").toExternalForm());
+        this.gameMusic.setCycleCount(AudioClip.INDEFINITE);
         this.gameScene = gameScene;
         this.gameController = gameController;
         this.gameController.setDelegate(this);
@@ -55,12 +68,14 @@ public class ApplicationController extends Application {
 
     public void playGamePressed()
     {
+        this.uiClip.play();
         System.out.println("play game pressed");
         this.setDifficultyPaneVisible();
     }
 
     public void backPressed()
     {
+        this.uiClip.play();
         System.out.println("back pressed");
         this.setMainPaneVisible();
     }
@@ -79,18 +94,21 @@ public class ApplicationController extends Application {
 
     public void quitPressed()
     {
+        this.uiClip.play();
         System.out.println("quit pressed");
         this.closeApplication();
     }
 
     public void easyPressed()
     {
+        this.uiClip.play();
         System.out.println("easy pressed");
         this.startGame(0);
     }
 
     public void hardPressed()
     {
+        this.uiClip.play();
         System.out.println("hard pressed");
         this.startGame(1);
     }
@@ -104,12 +122,16 @@ public class ApplicationController extends Application {
 
     public void transitionToMenu()
     {
+        this.gameMusic.stop();
+        this.mainMusic.play();
         this.stage.setScene(this.mainScene);
         this.setMainPaneVisible();
     }
 
     public void transitionToGame()
     {
+        this.mainMusic.stop();
+        this.gameMusic.play();
         this.stage.setScene(this.gameScene);
     }
 
