@@ -1,14 +1,12 @@
 package strategicwar;
 
-import static org.junit.Assert.*;
-
-import org.junit.Rule;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertTrue;
+
 public class EasyAITest {
-	@Rule
-	public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();
-	
     @Test
     public void testSelectBattleCard()
     {
@@ -20,7 +18,7 @@ public class EasyAITest {
         hand.addCard(new Card(1, 2));
         EasyAI easyAI = new EasyAI();
         Card selection = easyAI.selectBattleCard(hand);
-        assertTrue(selection != null);
+        assertTrue(selection.getValue() == 2);
     }
 
     @Test
@@ -37,6 +35,8 @@ public class EasyAITest {
         Card[] selection = easyAI.selectPrizeCards(hand, count);
         assertTrue(selection.length == count);
         assertTrue(selection[0] != selection[1]);
+        assertTrue(selection[0].getValue() == 12);
+        assertTrue(selection[1].getValue() == 9);
     }
 
 }

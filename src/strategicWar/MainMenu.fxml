@@ -26,17 +26,17 @@
                   </Button>
                   <ImageView fitHeight="246.0" fitWidth="217.0" layoutX="57.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true" rotate="-24.0">
                      <image>
-                        <Image url="@../resources/Cards/king_of_spades2.png" />
+                        <Image url="@../resources/Cards/king_of_spades.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="246.0" fitWidth="217.0" layoutX="169.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" rotate="-24.0">
                      <image>
-                        <Image url="@../resources/Cards/queen_of_hearts2.png" />
+                        <Image url="@../resources/Cards/queen_of_hearts.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="246.0" fitWidth="217.0" layoutX="773.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true" rotate="24.0">
                      <image>
-                        <Image url="@../resources/Cards/jack_of_diamonds2.png" />
+                        <Image url="@../resources/Cards/jack_of_diamonds.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="246.0" fitWidth="217.0" layoutX="662.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" rotate="24.0">
@@ -60,22 +60,22 @@
                   </Button>
                   <ImageView fitHeight="246.0" fitWidth="217.0" layoutX="57.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true" rotate="-24.0">
                      <image>
-                        <Image url="@../resources/Cards/queen_of_diamonds2.png" />
+                        <Image url="@../resources/Cards/queen_of_diamonds.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="246.0" fitWidth="217.0" layoutX="169.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" rotate="-24.0">
                      <image>
-                        <Image url="@../resources/Cards/jack_of_clubs2.png" />
+                        <Image url="@../resources/Cards/jack_of_clubs.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="246.0" fitWidth="217.0" layoutX="773.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true" rotate="24.0">
                      <image>
-                        <Image url="@../resources/Cards/ace_of_spades2.png" />
+                        <Image url="@../resources/Cards/ace_of_spades.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="246.0" fitWidth="217.0" layoutX="662.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" rotate="24.0">
                      <image>
-                        <Image url="@../resources/Cards/king_of_hearts2.png" />
+                        <Image url="@../resources/Cards/king_of_hearts.png" />
                      </image>
                   </ImageView>
                   <Button layoutX="382.0" layoutY="314.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="61.0" prefWidth="237.0" text="Back">

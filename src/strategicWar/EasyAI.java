@@ -1,8 +1,6 @@
 package strategicwar;
 
 public class EasyAI extends WarAI {
-
-
     /**
      * This AI selects a random card to battle
      * @param hand AI's hand
@@ -10,7 +8,17 @@ public class EasyAI extends WarAI {
      */
     @Override
     public Card selectBattleCard(Hand hand) {
-        return hand.pickRandom();
+        int lowestValue = hand.getCardValue(0);
+        int index = 0;
+        for(int i = 1; i < hand.cardCount(); i++)
+        {
+            if (hand.getCardValue(i) < lowestValue)
+            {
+                lowestValue = hand.getCardValue(i);
+                index = i;
+            }
+        }
+        return hand.selectCard(index);
     }
 
     /**
@@ -24,7 +32,17 @@ public class EasyAI extends WarAI {
         Card[] prizes = new Card[count];
         for(int j = 0; j < count; j++)
         {
-            prizes[j] = hand.pickRandom();
+            int highestValue = hand.getCardValue(0);
+            int index = 0;
+            for (int i = 1; i < hand.cardCount(); i++)
+            {
+                if (hand.getCardValue(i) > highestValue)
+                {
+                    highestValue = hand.getCardValue(i);
+                    index = i;
+                }
+            }
+            prizes[j] = hand.selectCard(index);
         }
         return prizes;
     }

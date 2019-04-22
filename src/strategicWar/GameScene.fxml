@@ -17,7 +17,7 @@
          <children>
             <ImageView fx:id="pHandImage0" disable="true" fitHeight="193.0" fitWidth="137.0" layoutX="154.0" layoutY="501.0" onMouseClicked="#mouseClickedCard" onMouseEntered="#mouseEnteredCard" onMouseExited="#mouseExitedCard" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../resources/Cards/jack_of_spades2.png" />
+                  <Image url="@../resources/Cards/jack_of_spades.png" />
                </image>
             </ImageView>
             <ImageView fx:id="pHandImage1" disable="true" fitHeight="193.0" fitWidth="137.0" layoutX="294.0" layoutY="501.0" onMouseClicked="#mouseClickedCard" onMouseEntered="#mouseEnteredCard" onMouseExited="#mouseExitedCard" pickOnBounds="true" preserveRatio="true">

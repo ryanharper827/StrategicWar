@@ -19,7 +19,7 @@ public class DeckFactory {
         ArrayList<Card> cards = new ArrayList<Card>();
         for(int suite = 0; suite < 4; suite++)
         {
-            for(int value= 1; value <= 13; value++)
+            for(int value= 2; value <= 14; value++)
             {
                 Card card = new Card(suite, value);
                 cards.add(card);

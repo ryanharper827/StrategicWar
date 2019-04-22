@@ -81,7 +81,7 @@ public class Card{
 		{
 			switch(this.value)
 			{
-			case 1:
+			case 14:
 				string += "A";
 				break;
 			case 11:
@@ -142,7 +142,7 @@ public class Card{
 		{
 			switch(this.value)
 			{
-			case 1:
+			case 14:
 				value = "Ace";
 				break;
 			case 11:
@@ -190,7 +190,7 @@ public class Card{
 		{
 			switch(this.value)
 			{
-				case 1:
+				case 14:
 					value = "ace";
 					break;
 				case 11:

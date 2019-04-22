@@ -54,11 +54,14 @@ public class WarGame {
             this.currentDifficulty = difficulty;
             switch (difficulty)
             {
+                case 0:
+                    this.ai = new EasyAI();
+                    break;
                 case 1:
                     this.ai = new HardAI();
                     break;
                 default:
-                    this.ai = new EasyAI();
+                    this.ai = new RandomAI();
                     break;
             }
             this.playing = true;

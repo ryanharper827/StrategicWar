@@ -4,12 +4,12 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.junit.Rule;
+//import org.junit.Rule;
 import org.junit.Test;
 
 public class WarTest {
-	@Rule
-	public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();
+	//@Rule
+	//public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();
 	
 	@Test
 	public void testConstructor() {
