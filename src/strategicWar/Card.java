@@ -1,6 +1,5 @@
 package strategicwar;
 
-import javafx.scene.image.Image;
 import java.util.Comparator;
 
 /**
@@ -10,7 +9,6 @@ import java.util.Comparator;
 public class Card{
 	protected int suite;
 	protected int value;
-	private Image cardImage;
 
 	/**
 	 * Instantiate a new card.
@@ -161,24 +159,11 @@ public class Card{
 		return value + " of " + suite;
 	}
 
-
-	/**
-	 * Checks to see if the image has been loaded and returns the Image for this card
-	 * @return Image of the card
-	 */
-	public Image getCardImage() {
-		if(this.cardImage == null)
-		{
-			this.cardImage = new Image(this.getImageURL());
-		}
-		return this.cardImage;
-	}
-
 	/**
 	 * Gets the URL of the card image.
 	 * @return string URL of card image
 	 */
-	private String getImageURL()
+	public String getImageURL()
 	{
 		String suite = "";
 		String value = "";

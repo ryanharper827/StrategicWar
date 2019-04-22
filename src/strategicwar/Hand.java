@@ -66,7 +66,7 @@ public class Hand {
 	 */
 	public int getCardValue(int i){ return hand.get(i).getValue();}
 
-	public Image getCardImage(int i){ return hand.get(i).getCardImage();}
+	public String getCardImageURL(int i){ return hand.get(i).getImageURL();}
 
 	/**
 	 * Picks a random card from the Hand, removes it and returns it.

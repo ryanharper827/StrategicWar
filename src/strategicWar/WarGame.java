@@ -68,61 +68,109 @@ public class WarGame {
         }
     }
 
+    /**
+     * Set the playing variable
+     * @param playing
+     */
     public void setPlaying(boolean playing)
     {
         this.playing = playing;
     }
 
+    /**
+     * Get the current difficulty
+     * @return difficulty
+     */
     public int getCurrentDifficulty()
     {
         return this.currentDifficulty;
     }
 
+    /**
+     * Get the current game phase
+     * @return GamePhase
+     */
     public GamePhase getPhase()
     {
         return this.phase;
     }
 
+    /**
+     * Get the current player battle card
+     * @return card
+     */
     public Card getPlayerCard()
     {
         return this.playerCard;
     }
 
+    /**
+     * Get the current AI battle card
+     * @return card
+     */
     public Card getAICard()
     {
         return this.aiCard;
     }
 
+    /**
+     * Get the last victor value
+     * @return int
+     */
     public int getLastVictor()
     {
         return this.lastVictor;
     }
 
+    /**
+     * Get the current player Hand
+     * @return Hand
+     */
     public Hand getPlayerHand()
     {
         return this.playerHand;
     }
 
+    /**
+     * Get the current AI Hand
+     * @return Hand
+     */
     public Hand getAIHand()
     {
         return this.aiHand;
     }
 
+    /**
+     * Get the current player Prizes
+     * @return ArrayList Card
+     */
     public ArrayList<Card> getPlayerPrizes()
     {
         return this.playerPrizes;
     }
 
+    /**
+     * Get the current AI prizes
+     * @return ArrayList Card
+     */
     public ArrayList<Card> getAIPrizes()
     {
         return this.aiPrizes;
     }
 
+    /**
+     * Get the current player pile count
+     * @return int
+     */
     public int getPlayerPileCount()
     {
         return this.playerPile.cardCount();
     }
 
+    /**
+     * Get the current player deck count
+     * @return int
+     */
     public  int getPlayerDeckCount()
     {
         return this.playerDeck.getSize();
@@ -405,6 +453,10 @@ public class WarGame {
         }
     }
 
+    /**
+     * GAME OVER PHASE: End of the game, changes the Game Phase to either WinnerAI or WinnerPlayer
+     * @param winner
+     */
     private void gameOverPhase(int winner)
     {
         this.playing = false;
@@ -419,10 +471,18 @@ public class WarGame {
         this.alertPhase();
     }
 
+    /**
+     * Get the current player score
+     * @return the player's score
+     */
     public int getPlayerScore() {
         return this.playerDeck.getSize() + this.playerHand.cardCount() + this.playerPile.cardCount();
     }
 
+    /**
+     * Get the current computer score
+     * @return the computer's score
+     */
     public int getComputerScore()
     {
         return this.aiDeck.getSize() + this.aiHand.cardCount() + this.aiPile.cardCount();
@@ -449,12 +509,18 @@ public class WarGame {
         hand.addCards(deck.drawCards(toDraw));
     }
 
-
+    /**
+     * Add an observer to the WarGame
+     * @param observer
+     */
     public void addObserver(WarGameObserver observer)
     {
         this.observers.add(observer);
     }
 
+    /**
+     * Called to alert observers to Hand changes
+     */
     private void alertHands()
     {
         for(WarGameObserver o : this.observers)
@@ -463,6 +529,9 @@ public class WarGame {
         }
     }
 
+    /**
+     * Called to alert observers to DiscardPile changes
+     */
     private void alertPiles()
     {
         for(WarGameObserver o : this.observers)
@@ -471,6 +540,9 @@ public class WarGame {
         }
     }
 
+    /**
+     * Called to alert observers to score changes
+     */
     private void alertScore()
     {
         for(WarGameObserver o : this.observers)
@@ -479,6 +551,9 @@ public class WarGame {
         }
     }
 
+    /**
+     * Called to alert observers to a battle or war result
+     */
     private void alertVictor()
     {
         for(WarGameObserver o : this.observers)
@@ -487,6 +562,9 @@ public class WarGame {
         }
     }
 
+    /**
+     * Called to alert observers to changes in the decks
+     */
     private void alertDecks()
     {
         for(WarGameObserver o : this.observers)
@@ -495,6 +573,9 @@ public class WarGame {
         }
     }
 
+    /**
+     * Called to alert observers to a change in game phase
+     */
     private void alertPhase()
     {
         for(WarGameObserver o : this.observers)
@@ -503,6 +584,9 @@ public class WarGame {
         }
     }
 
+    /**
+     * Called to alert observers to changes in prizes
+     */
     private void alertPrizes()
     {
         for(WarGameObserver o : this.observers)
@@ -511,6 +595,9 @@ public class WarGame {
         }
     }
 
+    /**
+     * Called to alert observers to changes in battle cards
+     */
     private void alertBattleCards()
     {
         for(WarGameObserver o : this.observers)
@@ -519,6 +606,9 @@ public class WarGame {
         }
     }
 
+    /**
+     * Called to alert observers
+     */
     private void alertAll()
     {
         for(WarGameObserver o : this.observers)

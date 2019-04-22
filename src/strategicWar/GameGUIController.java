@@ -25,6 +25,7 @@ import java.util.ArrayList;
 public class GameGUIController implements WarGameObserver{
 
     private WarGame game;
+    private ImagePool imagePool;
     private ApplicationController applicationController;
 
     @FXML
@@ -65,6 +66,7 @@ public class GameGUIController implements WarGameObserver{
     public GameGUIController()
     {
         this.game = WarGame.getInstance();
+        this.imagePool = ImagePool.getInstance();
         this.game.addObserver(this);
         try
         {
@@ -84,7 +86,7 @@ public class GameGUIController implements WarGameObserver{
             System.out.println("ERROR LOADING FXML: " + exception.toString());
             System.exit(1);
         }
-        this.cardBackImage = new Image("/resources/Cards/card_back.png");
+        this.cardBackImage = imagePool.getImage("/resources/Cards/card_back.png");
         this.uiClip = new AudioClip(getClass().getResource("../resources/sound/play_card.mp3").toExternalForm());
         this.rifleClip = new AudioClip(getClass().getResource("../resources/sound/rifleshot.mp3").toExternalForm());
         this.rifleClip.setVolume(.2d);
@@ -263,7 +265,7 @@ public class GameGUIController implements WarGameObserver{
         Card aiCard = this.game.getAICard();
         if(playerCard != null)
         {
-            this.pPlayedImage.setImage(playerCard.getCardImage());
+            this.pPlayedImage.setImage(this.imagePool.getImage(playerCard.getImageURL()));
         }
         else
         {
@@ -271,7 +273,7 @@ public class GameGUIController implements WarGameObserver{
         }
         if(aiCard != null)
         {
-            this.cPlayedImage.setImage(aiCard.getCardImage());
+            this.cPlayedImage.setImage(this.imagePool.getImage(aiCard.getImageURL()));
         }
         else
         {
@@ -293,7 +295,7 @@ public class GameGUIController implements WarGameObserver{
         }
         for(int i = 0; i < playerHand.cardCount(); i++)
         {
-            this.pHandImages[i].setImage(playerHand.getCardImage(i));
+            this.pHandImages[i].setImage(imagePool.getImage(playerHand.getCardImageURL(i)));
         }
         for(int i = 0; i < aiHand.cardCount(); i++)
         {
@@ -315,11 +317,11 @@ public class GameGUIController implements WarGameObserver{
         }
         for(int i = 0; i < playerPrizes.size(); i++)
         {
-            this.pPrizeImages[i].setImage(playerPrizes.get(playerPrizes.size()-(1+i)).getCardImage());
+            this.pPrizeImages[i].setImage(imagePool.getImage(playerPrizes.get(playerPrizes.size()-(1+i)).getImageURL()));
         }
         for(int i = 0; i < aiPrizes.size(); i++)
         {
-            this.cPrizeImages[i].setImage(aiPrizes.get(aiPrizes.size()-(1+i)).getCardImage());
+            this.cPrizeImages[i].setImage(imagePool.getImage(aiPrizes.get(aiPrizes.size()-(1+i)).getImageURL()));
         }
     }
 

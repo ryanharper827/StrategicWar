@@ -2,13 +2,13 @@ package strategicwar;
 
 import static org.junit.Assert.*;
 
-import org.junit.Rule;
+//import org.junit.Rule;
 import org.junit.Test;
 
 public class CardTest {
 	
-	@Rule
-	public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();
+	//@Rule
+	//public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();
 	
 	@Test
 	public void testToString() {
