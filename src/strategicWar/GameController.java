@@ -151,7 +151,7 @@ public class GameController {
         this.uiClip = new AudioClip(getClass().getResource("../resources/sound/play_card.mp3").toExternalForm());
         this.playerPrizes = new ArrayList<Card>();
         this.aiPrizes = new ArrayList<Card>();
-        Deck mainDeck = new Deck(false);
+        Deck mainDeck = DeckFactory.getInstance().createDeck();
         //Took out unnecessary toString calls on mainDeck
         System.out.println("Preshuffle: " + mainDeck + "\nCount: " + mainDeck.getSize());
         mainDeck = Deck.shuffleDeck(mainDeck);

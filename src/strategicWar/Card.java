@@ -7,11 +7,11 @@ import java.util.Comparator;
  * Represents a standard card in a deck of playing cards.
  *
  */
-public class Card {
-	private int suite;
-	private int value;
+public class Card{
+	protected int suite;
+	protected int value;
 	private Image cardImage;
-	
+
 	/**
 	 * Instantiate a new card.
 	 * @param suite The integer representation of the suite (0=Hearts, 1=Spades, 2=Diamonds, 3=Clubs).
@@ -21,7 +21,6 @@ public class Card {
 	{
 		this.suite = suite;
 		this.value = value;
-		this.cardImage = new Image(this.getImageURL());
 	}
 	
 	/**
@@ -41,12 +40,6 @@ public class Card {
 	{
 		return this.suite;
 	}
-
-	/**
-	 * Gets the Image for this card
-	 * @return Image of the card
-	 */
-	public Image getCardImage() { return this.cardImage; }
 	
     /**
      * Get Card value comparator
@@ -166,6 +159,19 @@ public class Card {
 			}
 		}
 		return value + " of " + suite;
+	}
+
+
+	/**
+	 * Checks to see if the image has been loaded and returns the Image for this card
+	 * @return Image of the card
+	 */
+	public Image getCardImage() {
+		if(this.cardImage == null)
+		{
+			this.cardImage = new Image(this.getImageURL());
+		}
+		return this.cardImage;
 	}
 
 	/**

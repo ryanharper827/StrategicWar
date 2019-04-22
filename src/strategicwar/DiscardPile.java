@@ -21,7 +21,7 @@ public class DiscardPile {
 	}
 	
 	/**
-	 * Inserts the Card object at the top of the DiscardPile. 
+	 * Inserts the Card object at the top of the DiscardPile.
 	 * For adding multiple cards, see addCards.
 	 * @param card The Card object to be added to the DiscardPile
 	 */

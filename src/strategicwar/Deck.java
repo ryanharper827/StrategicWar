@@ -6,27 +6,16 @@ import java.util.Collections;
 
 public class Deck {
 	private ArrayList<Card> cards;
-	
+
 	/**
-	 * Instantiate a new empty or full 52 card deck.
-	 * @param empty Is the new deck empty?
+	 * Instantiate an empty deck of cards.
 	 */
-	public Deck(boolean empty)
+	public Deck()
 	{
 		this.cards = new ArrayList<Card>();
-		if(!empty)
-		{
-			for(int suite = 0; suite < 4; suite++)
-			{
-				for(int value= 1; value <= 13; value++)
-				{
-					Card card = new Card(suite, value);
-					this.cards.add(card);
-				}
-			}
-		}
 	}
-	
+
+
 	/**
 	 * Instantiate a deck of cards with an array of cards.
 	 * @param cards An array of cards
@@ -38,6 +27,16 @@ public class Deck {
 		{
 			this.cards.add(card);
 		}
+	}
+
+
+	/**
+	 * Instantiate a deck of cards with an arraylist of cards.
+	 * @param cards An arraylist of cards
+	 */
+	public Deck(ArrayList<Card> cards)
+	{
+		this.cards = cards;
 	}
 	
 	/**

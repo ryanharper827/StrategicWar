@@ -11,7 +11,7 @@ public class War extends Battle{
 	 * @param player Player card from the Battle that resulted in this War
 	 * @param ai AI card from the Battle that resulted in this War
 	 */
-	public War(Card player, Card ai, ArrayList<Card> playerPrizes, ArrayList<Card> aiPrizes) 
+	public War(Card player, Card ai, ArrayList<Card> playerPrizes, ArrayList<Card> aiPrizes)
 	{
 		super(player, ai);
 		this.playerPrizes = new ArrayList<Card>();
@@ -31,7 +31,7 @@ public class War extends Battle{
 	 * @param playerPrizes Additional player prize Cards
 	 * @param aiPrizes Additional AI prize Cards 
 	 */
-	public void additionalWar(Card player, Card ai, ArrayList<Card> playerPrizes, ArrayList<Card> aiPrizes) 
+	public void additionalWar(Card player, Card ai, ArrayList<Card> playerPrizes, ArrayList<Card> aiPrizes)
 	{
 		this.playerPrizes.add(this.playerCard);
 		this.aiPrizes.add(this.aiCard);
@@ -46,7 +46,7 @@ public class War extends Battle{
 	 * Get all Cards from the War
 	 */
 	@Override
-	public ArrayList<Card> getCards() 
+	public ArrayList<Card> getCards()
 	{
 		ArrayList<Card> returnCards = new ArrayList<Card>();
 		returnCards.add(this.aiCard);

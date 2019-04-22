@@ -11,7 +11,7 @@ public class DeckTest {
 	@Test
 	public void testAddCard() {
 		Card card = new Card(0,1);
-		Deck deck = new Deck(true);
+		Deck deck = new Deck();
 		deck.addCard(card);
 		assertTrue(deck.getCards()[0].equals(card));
 	}
@@ -20,7 +20,7 @@ public class DeckTest {
 	public void testAddCards()
 	{
 		Card[] cards = new Card[] {new Card(0,1), new Card(0,2)};
-		Deck deck = new Deck(true);
+		Deck deck = new Deck();
 		deck.addCards(cards);
 		Comparator<Card> comp = Card.getCompByValue();
 		for(Card card : cards)
@@ -32,7 +32,7 @@ public class DeckTest {
 	@Test
 	public void testDrawCard()
 	{
-		Deck deck = new Deck(false);
+		Deck deck = DeckFactory.getInstance().createDeck();
 		for(int i = 0; i < 52; i++)
 		{
 			Card c = deck.drawCard();
@@ -45,7 +45,7 @@ public class DeckTest {
 	@Test
 	public void testSplitDeck()
 	{
-		Deck deck = new Deck(false);
+		Deck deck = DeckFactory.getInstance().createDeck();
 		Deck[] splitDecks = Deck.splitDeck(deck);
 		assertTrue(splitDecks[0].getSize() == 26);
 		assertTrue(splitDecks[0].getSize() == 26);
