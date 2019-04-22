@@ -19,6 +19,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Controls the functions of the GameScene and its various dialogs
+ */
 public class GameGUIController implements WarGameObserver{
 
     private WarGame game;
@@ -47,14 +50,21 @@ public class GameGUIController implements WarGameObserver{
     private AudioClip sirenClip;
     private AudioClip shuffleClip;
 
+    /**
+     * Set this instance's ApplicationController
+     * @param applicationController
+     */
     public void setApplicationController(ApplicationController applicationController)
     {
         this.applicationController = applicationController;
     }
 
-    public GameGUIController(WarGame game)
+    /**
+     * Get a new instance of a GameGUIController
+     */
+    public GameGUIController()
     {
-        this.game = game;
+        this.game = WarGame.getInstance();
         this.game.addObserver(this);
         try
         {
@@ -84,6 +94,9 @@ public class GameGUIController implements WarGameObserver{
         this.shuffleClip = new AudioClip(getClass().getResource("../resources/sound/shuffle.mp3").toExternalForm());
     }
 
+    /**
+     * Initialize the components that are only available on scene load
+     */
     public void intitialize()
     {
         this.pHandImages = new ImageView[5];
@@ -207,9 +220,12 @@ public class GameGUIController implements WarGameObserver{
         }
     }
 
+    /**
+     * WarGameObserver method: handles game phase changes
+     */
     public void phaseUpdated()
     {
-        switch (game.getPhase())
+        switch (this.game.getPhase())
         {
             case BattleSelection:
                 this.promptLabel.setText("Select a Card to Play");
@@ -238,10 +254,13 @@ public class GameGUIController implements WarGameObserver{
         }
     }
 
+    /**
+     * WarGameObserver method: handles when battle cards change
+     */
     public void battleCardsUpdated()
     {
-        Card playerCard = game.getPlayerCard();
-        Card aiCard = game.getAICard();
+        Card playerCard = this.game.getPlayerCard();
+        Card aiCard = this.game.getAICard();
         if(playerCard != null)
         {
             this.pPlayedImage.setImage(playerCard.getCardImage());
@@ -260,10 +279,13 @@ public class GameGUIController implements WarGameObserver{
         }
     }
 
+    /**
+     * WarGameObserver method: handles when hands are updated
+     */
     public void handsUpdated()
     {
-        Hand playerHand = game.getPlayerHand();
-        Hand aiHand = game.getAIHand();
+        Hand playerHand = this.game.getPlayerHand();
+        Hand aiHand = this.game.getAIHand();
         for(int i = 0 ; i < this.pHandImages.length; i++)
         {
             this.pHandImages[i].setImage(null);
@@ -279,10 +301,13 @@ public class GameGUIController implements WarGameObserver{
         }
     }
 
+    /**
+     * WarGameObserver method: handles when prize cards are updated
+     */
     public void prizesUpdated()
     {
-        ArrayList<Card> playerPrizes = game.getPlayerPrizes();
-        ArrayList<Card> aiPrizes = game.getPlayerPrizes();
+        ArrayList<Card> playerPrizes = this.game.getPlayerPrizes();
+        ArrayList<Card> aiPrizes = this.game.getPlayerPrizes();
         for(int i = 0; i < 3; i++)
         {
             this.pPrizeImages[i].setImage(null);
@@ -298,9 +323,12 @@ public class GameGUIController implements WarGameObserver{
         }
     }
 
+    /**
+     * WarGameObserver method: handles when player DiscardPile is updated
+     */
     public void pileUpdated()
     {
-        int pileCount = game.getPlayerPileCount();
+        int pileCount = this.game.getPlayerPileCount();
         if(pileCount > 0)
         {
             this.pDiscardLabel.setText("" + pileCount);
@@ -314,9 +342,12 @@ public class GameGUIController implements WarGameObserver{
         }
     }
 
+    /**
+     * WarGameObserver method: handles when the player deck is updated
+     */
     public void deckUpdated()
     {
-        int deckCount = game.getPlayerDeckCount();
+        int deckCount = this.game.getPlayerDeckCount();
         if(deckCount > 0)
         {
             if(!this.pDeckLabel.isVisible())
@@ -332,17 +363,23 @@ public class GameGUIController implements WarGameObserver{
         }
     }
 
+    /**
+     * WarGameObserver method: handles when the scores are updated
+     */
     public void scoresUpdated()
     {
-        int playeScore = game.getPlayerScore();
-        int aiScore = game.getComputerScore();
+        int playeScore = this.game.getPlayerScore();
+        int aiScore = this.game.getComputerScore();
         this.playerScoreLabel.setText("Player: " + playeScore);
         this.computerScoreLabel.setText("Computer: " + aiScore);
     }
 
+    /**
+     * WarGameObserver method: handles when a battle or war result occurs
+     */
     public void victorUpdated()
     {
-        int lastVictor = game.getLastVictor();
+        int lastVictor = this.game.getLastVictor();
         switch (lastVictor)
         {
             case 0 :
@@ -402,7 +439,7 @@ public class GameGUIController implements WarGameObserver{
         alert.showAndWait();
         if(alert.getResult() == ButtonType.YES)
         {
-            game.setPlaying(false);
+            this.game.setPlaying(false);
             this.applicationController.transitionToMenu();
         }
     }
@@ -433,6 +470,9 @@ public class GameGUIController implements WarGameObserver{
         this.aboutMenu.show();
     }
 
+    /**
+     * Handles the press of the ok button on the about menu
+     */
     public void okPressed()
     {
         this.uiClip.play();
@@ -452,7 +492,7 @@ public class GameGUIController implements WarGameObserver{
         System.out.println("retry pressed");
         Stage s = (Stage) this.gameOverMenu.getDialogPane().getScene().getWindow();
         s.hide();
-        game.start(game.getCurrentDifficulty());
+        this.game.start(this.game.getCurrentDifficulty());
     }
 
 

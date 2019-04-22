@@ -26,8 +26,6 @@ public class ApplicationController extends Application {
 
     private GameGUIController gameGUIController;
 
-    private WarGame warGame;
-
     @FXML
     private Pane firstPane;
 
@@ -40,31 +38,27 @@ public class ApplicationController extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
         Parent main = fxmlLoader.load();
         ApplicationController applicationController = fxmlLoader.getController();
-
-        WarGame warGame = new WarGame();
-        GameGUIController gameGUIController = new GameGUIController(warGame);
         fxmlLoader = new FXMLLoader(getClass().getResource("GameScene.fxml"));
-        fxmlLoader.setController(gameGUIController);
         Parent game = fxmlLoader.load();
-
+        GameGUIController gameGUIController = fxmlLoader.getController();
         Scene mainScene = new Scene(main);
         Scene gameScene = new Scene(game);
-        applicationController.initialize(primaryStage, mainScene, gameScene, gameGUIController, warGame);
+        applicationController.initialize(primaryStage, mainScene, gameScene, gameGUIController);
     }
 
     public static void main(String args[])
     {
         Application.launch(ApplicationController.class, args);
     }
+
     /**
-     * Sets the music, 
+     * initializes the AppController with all of its relevant variables
      * @param stage
      * @param mainScene
      * @param gameScene
-     * @param warGame
+     * @param gameGUIController
      */
-    public void initialize(Stage stage, Scene mainScene, Scene gameScene, GameGUIController gameGUIController,
-                           WarGame warGame)
+    public void initialize(Stage stage, Scene mainScene, Scene gameScene, GameGUIController gameGUIController)
     {
         this.stage = stage;
         this.mainScene = mainScene;
@@ -77,12 +71,14 @@ public class ApplicationController extends Application {
         this.gameScene = gameScene;
         this.gameGUIController = gameGUIController;
         this.gameGUIController.setApplicationController(this);
-        this.warGame = warGame;
         this.stage.setTitle("Strategic War");
         this.stage.setScene(mainScene);
         this.stage.show();
     }
 
+    /**
+     * Called when the playGameButton is pressed
+     */
     public void playGamePressed()
     {
         this.uiClip.play();
@@ -90,6 +86,9 @@ public class ApplicationController extends Application {
         this.setDifficultyPaneVisible();
     }
 
+    /**
+     * Called when the back button is pressed
+     */
     public void backPressed()
     {
         this.uiClip.play();
@@ -97,18 +96,27 @@ public class ApplicationController extends Application {
         this.setMainPaneVisible();
     }
 
+    /**
+     * Called to make the main pane visible
+     */
     private void setMainPaneVisible()
     {
         this.difficultyPane.setVisible(false);
         this.firstPane.setVisible(true);
     }
 
+    /**
+     * called to make the difficulty pane visible
+     */
     private void setDifficultyPaneVisible()
     {
         this.firstPane.setVisible(false);
         this.difficultyPane.setVisible(true);
     }
 
+    /**
+     * Called when the quit button is pressed
+     */
     public void quitPressed()
     {
         this.uiClip.play();
@@ -116,6 +124,9 @@ public class ApplicationController extends Application {
         this.closeApplication();
     }
 
+    /**
+     * Called when the easy difficulty button is pressed
+     */
     public void easyPressed()
     {
         this.uiClip.play();
@@ -123,6 +134,9 @@ public class ApplicationController extends Application {
         this.startGame(0);
     }
 
+    /**
+     * called when the hard difficulty button is pressed
+     */
     public void hardPressed()
     {
         this.uiClip.play();
@@ -130,13 +144,20 @@ public class ApplicationController extends Application {
         this.startGame(1);
     }
 
+    /**
+     * called by the button action methods to start a new game
+     * @param difficulty
+     */
     private void startGame(int difficulty)
     {
         System.out.println("starting game with " + difficulty + " level of difficulty");
         this.transitionToGame();
-        this.warGame.start(difficulty);
+        WarGame.getInstance().start(difficulty);
     }
 
+    /**
+     * Transitions scenes to the menu scene
+     */
     public void transitionToMenu()
     {
         this.gameMusic.stop();
@@ -145,6 +166,9 @@ public class ApplicationController extends Application {
         this.setMainPaneVisible();
     }
 
+    /**
+     * Transition scenes to the game scene
+     */
     public void transitionToGame()
     {
         this.mainMusic.stop();
@@ -153,6 +177,9 @@ public class ApplicationController extends Application {
         this.gameGUIController.intitialize();
     }
 
+    /**
+     * Closes the application
+     */
     public void closeApplication()
     {
         System.exit(0);

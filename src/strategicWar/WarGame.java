@@ -3,6 +3,9 @@ package strategicwar;
 import java.util.ArrayList;
 
 
+/**
+ * Class that holds the state and variables of a game of Strategic War
+ */
 public class WarGame {
 
     private ArrayList<WarGameObserver> observers;
@@ -31,10 +34,14 @@ public class WarGame {
 
     private int lastVictor;
 
-    public WarGame()
-    {
-        this.observers = new ArrayList<WarGameObserver>();
-    }
+    private static WarGame instance = new WarGame();
+
+    public static WarGame getInstance(){return instance;}
+
+    /**
+     * Creates a new WarGame class
+     */
+    private WarGame() { this.observers = new ArrayList<WarGameObserver>(); }
 
     /**
      * Start the game
