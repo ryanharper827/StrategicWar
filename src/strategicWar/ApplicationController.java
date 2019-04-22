@@ -4,8 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +24,9 @@ public class ApplicationController extends Application {
     private AudioClip gameMusic;
     private AudioClip uiClip;
 
-    private GameController gameController;
+    private GameGUIController gameGUIController;
+
+    private WarGame warGame;
 
     @FXML
     private Pane firstPane;
@@ -40,12 +40,16 @@ public class ApplicationController extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
         Parent main = fxmlLoader.load();
         ApplicationController applicationController = fxmlLoader.getController();
+
+        WarGame warGame = new WarGame();
+        GameGUIController gameGUIController = new GameGUIController(warGame);
         fxmlLoader = new FXMLLoader(getClass().getResource("GameScene.fxml"));
+        fxmlLoader.setController(gameGUIController);
         Parent game = fxmlLoader.load();
-        GameController gameController = fxmlLoader.getController();
+
         Scene mainScene = new Scene(main);
         Scene gameScene = new Scene(game);
-        applicationController.initialize(primaryStage, mainScene, gameScene, gameController);
+        applicationController.initialize(primaryStage, mainScene, gameScene, gameGUIController, warGame);
     }
 
     public static void main(String args[])
@@ -57,9 +61,10 @@ public class ApplicationController extends Application {
      * @param stage
      * @param mainScene
      * @param gameScene
-     * @param gameController
+     * @param warGame
      */
-    public void initialize(Stage stage, Scene mainScene, Scene gameScene, GameController gameController)
+    public void initialize(Stage stage, Scene mainScene, Scene gameScene, GameGUIController gameGUIController,
+                           WarGame warGame)
     {
         this.stage = stage;
         this.mainScene = mainScene;
@@ -70,8 +75,9 @@ public class ApplicationController extends Application {
         this.gameMusic = new AudioClip(getClass().getResource("../resources/music/Plans_in_Motion.mp3").toExternalForm());
         this.gameMusic.setCycleCount(AudioClip.INDEFINITE);
         this.gameScene = gameScene;
-        this.gameController = gameController;
-        this.gameController.setDelegate(this);
+        this.gameGUIController = gameGUIController;
+        this.gameGUIController.setApplicationController(this);
+        this.warGame = warGame;
         this.stage.setTitle("Strategic War");
         this.stage.setScene(mainScene);
         this.stage.show();
@@ -128,7 +134,7 @@ public class ApplicationController extends Application {
     {
         System.out.println("starting game with " + difficulty + " level of difficulty");
         this.transitionToGame();
-        this.gameController.start(difficulty);
+        this.warGame.start(difficulty);
     }
 
     public void transitionToMenu()
@@ -144,9 +150,10 @@ public class ApplicationController extends Application {
         this.mainMusic.stop();
         this.gameMusic.play();
         this.stage.setScene(this.gameScene);
+        this.gameGUIController.intitialize();
     }
 
-    public  void closeApplication()
+    public void closeApplication()
     {
         System.exit(0);
     }
