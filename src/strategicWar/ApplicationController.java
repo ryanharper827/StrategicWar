@@ -1,9 +1,7 @@
 package strategicwar;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.fxml.FXMLLoader;
