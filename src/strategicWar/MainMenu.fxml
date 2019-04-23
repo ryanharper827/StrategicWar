@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane id="mainPane" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" style="-fx-background-image: url('/resources/background.jpg');" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="strategicwar.ApplicationController">
+<BorderPane id="mainPane" fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" style="-fx-background-image: url('/resources/background.jpg');" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="strategicwar.MainMenuController">
    <center>
       <Pane id="centerPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -78,7 +78,7 @@
                         <Image url="@../resources/Cards/king_of_hearts.png" />
                      </image>
                   </ImageView>
-                  <Button layoutX="382.0" layoutY="314.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="61.0" prefWidth="237.0" text="Back">
+                  <Button layoutX="382.0" layoutY="314.0" mnemonicParsing="false" onAction="#randomPressed" prefHeight="61.0" prefWidth="237.0" text="Random">
                      <font>
                         <Font name="Avenir Next Heavy" size="24.0" />
                      </font>
@@ -93,6 +93,11 @@
                         <Font name="Avenir Next Heavy" size="24.0" />
                      </font>
                   </Label>
+                  <Button layoutX="382.0" layoutY="392.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="61.0" prefWidth="237.0" text="Back">
+                     <font>
+                        <Font name="Avenir Next Heavy" size="24.0" />
+                     </font>
+                  </Button>
                </children>
             </Pane>
          </children>

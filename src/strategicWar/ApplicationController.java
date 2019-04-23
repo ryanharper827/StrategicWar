@@ -22,28 +22,27 @@ public class ApplicationController extends Application {
     private AudioClip mainMusic;
     private Scene gameScene;
     private AudioClip gameMusic;
-    private AudioClip uiClip;
-
     private GameGUIController gameGUIController;
+    private MainMenuController mainMenuController;
 
-    @FXML
-    private Pane firstPane;
 
-    @FXML
-    private Pane difficultyPane;
-
+    /**
+     * Starts the application, loads the FXML files
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
         Parent main = fxmlLoader.load();
-        ApplicationController applicationController = fxmlLoader.getController();
+        MainMenuController mainMenuController = fxmlLoader.getController();
         fxmlLoader = new FXMLLoader(getClass().getResource("GameScene.fxml"));
         Parent game = fxmlLoader.load();
         GameGUIController gameGUIController = fxmlLoader.getController();
         Scene mainScene = new Scene(main);
         Scene gameScene = new Scene(game);
-        applicationController.initialize(primaryStage, mainScene, gameScene, gameGUIController);
+        this.initialize(primaryStage, mainScene, gameScene, mainMenuController, gameGUIController);
     }
 
     public static void main(String args[])
@@ -58,91 +57,26 @@ public class ApplicationController extends Application {
      * @param gameScene
      * @param gameGUIController
      */
-    public void initialize(Stage stage, Scene mainScene, Scene gameScene, GameGUIController gameGUIController)
+    public void initialize(Stage stage, Scene mainScene, Scene gameScene,
+                           MainMenuController mainMenuController, GameGUIController gameGUIController)
     {
         this.stage = stage;
-        this.mainScene = mainScene;
-        this.uiClip = new AudioClip(getClass().getResource("../resources/sound/play_card.mp3").toExternalForm());
         this.mainMusic = new AudioClip(getClass().getResource("../resources/music/Dangerous.mp3").toExternalForm());
-        this.mainMusic.setCycleCount(AudioClip.INDEFINITE);
-        this.mainMusic.play();
         this.gameMusic = new AudioClip(getClass().getResource("../resources/music/Plans_in_Motion.mp3").toExternalForm());
+        this.mainMusic.setCycleCount(AudioClip.INDEFINITE);
         this.gameMusic.setCycleCount(AudioClip.INDEFINITE);
+        this.mainScene = mainScene;
         this.gameScene = gameScene;
+        this.mainMenuController = mainMenuController;
+        this.mainMenuController.setApplicationController(this);
         this.gameGUIController = gameGUIController;
         this.gameGUIController.setApplicationController(this);
         this.stage.setTitle("Strategic War");
         this.stage.setScene(mainScene);
         this.stage.show();
+        this.mainMusic.play();
     }
 
-    /**
-     * Called when the playGameButton is pressed
-     */
-    public void playGamePressed()
-    {
-        this.uiClip.play();
-        System.out.println("play game pressed");
-        this.setDifficultyPaneVisible();
-    }
-
-    /**
-     * Called when the back button is pressed
-     */
-    public void backPressed()
-    {
-        this.uiClip.play();
-        System.out.println("back pressed");
-        this.setMainPaneVisible();
-    }
-
-    /**
-     * Called to make the main pane visible
-     */
-    private void setMainPaneVisible()
-    {
-        this.difficultyPane.setVisible(false);
-        this.firstPane.setVisible(true);
-    }
-
-    /**
-     * called to make the difficulty pane visible
-     */
-    private void setDifficultyPaneVisible()
-    {
-        this.firstPane.setVisible(false);
-        this.difficultyPane.setVisible(true);
-    }
-
-    /**
-     * Called when the quit button is pressed
-     */
-    public void quitPressed()
-    {
-        this.uiClip.play();
-        System.out.println("quit pressed");
-        this.closeApplication();
-    }
-
-    /**
-     * Called when the easy difficulty button is pressed
-     */
-    public void easyPressed()
-    {
-        this.uiClip.play();
-        System.out.println("easy pressed");
-        this.startGame(0);
-    }
-
-    /**
-     * called when the hard difficulty button is pressed
-     */
-    public void hardPressed()
-    {
-        this.uiClip.play();
-        System.out.println("hard pressed");
-        this.startGame(1);
-    }
 
     /**
      * called by the button action methods to start a new game
@@ -151,7 +85,6 @@ public class ApplicationController extends Application {
     private void startGame(int difficulty)
     {
         System.out.println("starting game with " + difficulty + " level of difficulty");
-        this.transitionToGame();
         WarGame.getInstance().start(difficulty);
     }
 
@@ -163,18 +96,19 @@ public class ApplicationController extends Application {
         this.gameMusic.stop();
         this.mainMusic.play();
         this.stage.setScene(this.mainScene);
-        this.setMainPaneVisible();
     }
 
     /**
      * Transition scenes to the game scene
+     * @param difficulty
      */
-    public void transitionToGame()
+    public void transitionToGame(int difficulty)
     {
         this.mainMusic.stop();
         this.gameMusic.play();
         this.stage.setScene(this.gameScene);
         this.gameGUIController.intitialize();
+        this.startGame(difficulty);
     }
 
     /**
