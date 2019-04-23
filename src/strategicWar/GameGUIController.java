@@ -87,13 +87,13 @@ public class GameGUIController implements WarGameObserver{
             System.exit(1);
         }
         this.cardBackImage = imagePool.getImage("/resources/Cards/card_back.png");
-        this.uiClip = new AudioClip(getClass().getResource("../resources/sound/play_card.mp3").toExternalForm());
-        this.rifleClip = new AudioClip(getClass().getResource("../resources/sound/rifleshot.mp3").toExternalForm());
+        this.uiClip = new AudioClip(getClass().getResource("/resources/sound/play_card.mp3").toExternalForm());
+        this.rifleClip = new AudioClip(getClass().getResource("/resources/sound/rifleshot.mp3").toExternalForm());
         this.rifleClip.setVolume(.2d);
-        this.explosionClip = new AudioClip(getClass().getResource("../resources/sound/explosion.mp3").toExternalForm());
+        this.explosionClip = new AudioClip(getClass().getResource("/resources/sound/explosion.mp3").toExternalForm());
         this.explosionClip.setVolume(.5d);
-        this.sirenClip = new AudioClip(getClass().getResource("../resources/sound/siren.mp3").toExternalForm());
-        this.shuffleClip = new AudioClip(getClass().getResource("../resources/sound/shuffle.mp3").toExternalForm());
+        this.sirenClip = new AudioClip(getClass().getResource("/resources/sound/siren.mp3").toExternalForm());
+        this.shuffleClip = new AudioClip(getClass().getResource("/resources/sound/shuffle.mp3").toExternalForm());
     }
 
     /**

@@ -63,8 +63,8 @@ public class ApplicationController extends Application {
                            MainMenuController mainMenuController, GameGUIController gameGUIController)
     {
         this.stage = stage;
-        this.mainMusic = new AudioClip(getClass().getResource("../resources/music/Dangerous.mp3").toExternalForm());
-        this.gameMusic = new AudioClip(getClass().getResource("../resources/music/Plans_in_Motion.mp3").toExternalForm());
+        this.mainMusic = new AudioClip(getClass().getResource("/resources/music/Dangerous.mp3").toExternalForm());
+        this.gameMusic = new AudioClip(getClass().getResource("/resources/music/Plans_in_Motion.mp3").toExternalForm());
         this.mainMusic.setCycleCount(AudioClip.INDEFINITE);
         this.gameMusic.setCycleCount(AudioClip.INDEFINITE);
         this.mainScene = mainScene;

@@ -17,7 +17,7 @@ public class MainMenuController {
 
     public MainMenuController()
     {
-        this.uiClip = new AudioClip(getClass().getResource("../resources/sound/play_card.mp3").toExternalForm());
+        this.uiClip = new AudioClip(getClass().getResource("/resources/sound/play_card.mp3").toExternalForm());
     }
 
     /**
