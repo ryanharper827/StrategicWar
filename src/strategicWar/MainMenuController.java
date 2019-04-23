@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
 
+/**
+ * Controls the GUI functionality of the main menu scene.
+ */
 public class MainMenuController {
     private ApplicationController applicationController;
     private AudioClip uiClip;
@@ -19,7 +22,7 @@ public class MainMenuController {
 
     /**
      * Set this instance's ApplicationController
-     * @param applicationController
+     * @param applicationController the ApplicationController instance
      */
     public void setApplicationController(ApplicationController applicationController)
     {

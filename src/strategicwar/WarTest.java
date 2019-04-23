@@ -7,6 +7,9 @@ import java.util.ArrayList;
 //import org.junit.Rule;
 import org.junit.Test;
 
+/**
+ * Designed to test the War class.
+ */
 public class WarTest {
 	//@Rule
 	//public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();

@@ -6,6 +6,9 @@ import java.util.Comparator;
 
 import org.junit.Test;
 
+/**
+ * Designed to test the Deck class.
+ */
 public class DeckTest {
 
 	@Test

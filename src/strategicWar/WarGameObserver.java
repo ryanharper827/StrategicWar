@@ -1,7 +1,7 @@
 package strategicwar;
 
 /**
- * Used by any class that wants to observe changes in a WarGame
+ * Used by any class that wants to observe changes in a WarGame.
  */
 public interface WarGameObserver {
     public void victorUpdated();

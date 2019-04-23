@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 
 /**
- * Image pool that loads images as they are needed and gives them to a client
+ * Image pool that loads images as they are needed and gives them to a client.
  */
 public class ImagePool {
     HashMap<String, Image> imageMap;
@@ -23,7 +23,7 @@ public class ImagePool {
 
     /**
      * Get an Image based on its URL
-     * @param url
+     * @param url the URL of the image
      * @return Image
      */
     public Image getImage(String url)

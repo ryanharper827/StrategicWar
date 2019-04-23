@@ -6,7 +6,10 @@ import java.util.ArrayList;
 
 import org.junit.Rule;
 import org.junit.Test;
-//TODO finish test construction
+
+/**
+ * Designed to test the Battle class.
+ */
 public class BattleTest {
 	
 	//@Rule

@@ -11,7 +11,6 @@ import javafx.scene.media.AudioClip;
 /**
  * A controller for the entire application. It processes the FXML files, 
  * audio, and starts the JavaFX window.
- * @authors ryanharper, jaredpeterson
  *
  */
 public class ApplicationController extends Application {
@@ -26,8 +25,8 @@ public class ApplicationController extends Application {
 
     /**
      * Starts the application, loads the FXML files
-     * @param primaryStage
-     * @throws Exception
+     * @param primaryStage the primary javafx Stage
+     * @throws Exception if the FXML resources are not found
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -43,6 +42,10 @@ public class ApplicationController extends Application {
         this.initialize(primaryStage, mainScene, gameScene, mainMenuController, gameGUIController);
     }
 
+    /**
+     * Main method for the entire application
+     * @param args command line arguments
+     */
     public static void main(String args[])
     {
         Application.launch(ApplicationController.class, args);
@@ -50,10 +53,11 @@ public class ApplicationController extends Application {
 
     /**
      * initializes the AppController with all of its relevant variables
-     * @param stage
-     * @param mainScene
-     * @param gameScene
-     * @param gameGUIController
+     * @param stage the primary stage
+     * @param mainScene the main scene loaded by fxml
+     * @param gameScene the game scene loaded by fxml
+     * @param mainMenuController the MainMenuController from the main scene
+     * @param gameGUIController the GameGUIController from the game scene
      */
     public void initialize(Stage stage, Scene mainScene, Scene gameScene,
                            MainMenuController mainMenuController, GameGUIController gameGUIController)
@@ -78,7 +82,7 @@ public class ApplicationController extends Application {
 
     /**
      * called by the button action methods to start a new game
-     * @param difficulty
+     * @param difficulty the difficulty of the game
      */
     private void startGame(int difficulty)
     {
@@ -98,7 +102,7 @@ public class ApplicationController extends Application {
 
     /**
      * Transition scenes to the game scene
-     * @param difficulty
+     * @param difficulty the difficutly to start the game
      */
     public void transitionToGame(int difficulty)
     {

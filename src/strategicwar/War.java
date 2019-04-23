@@ -2,14 +2,21 @@ package strategicwar;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a War in a WarGame.
+ */
 public class War extends Battle{
 	ArrayList<Card> playerPrizes;
 	ArrayList<Card> aiPrizes;
+
 	/**
+	 *
 	 * Initializes the War object and places the player and
 	 * AI cards into their respective internal storage.
 	 * @param player Player card from the Battle that resulted in this War
 	 * @param ai AI card from the Battle that resulted in this War
+	 * @param playerPrizes the players selected prizes
+	 * @param aiPrizes the AI selected prizes
 	 */
 	public War(Card player, Card ai, ArrayList<Card> playerPrizes, ArrayList<Card> aiPrizes)
 	{

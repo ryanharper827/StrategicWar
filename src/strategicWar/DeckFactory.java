@@ -3,7 +3,7 @@ package strategicwar;
 import java.util.ArrayList;
 
 /**
- * Used to create decks with 52 cards
+ * Used to create decks with 52 cards.
  */
 public class DeckFactory {
     private DeckFactory(){}

@@ -7,6 +7,9 @@ import java.util.ArrayList;
 //import org.junit.Rule;
 import org.junit.Test;
 
+/**
+ * Used to test the DiscardPile class.
+ */
 public class DiscardPileTest {
 	//@Rule
 	//public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();

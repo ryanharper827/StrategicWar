@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import org.junit.Rule;
 import org.junit.Test;
 
+/**
+ * Designed to test the Hand class
+ */
 public class HandTest {
 	@Rule
 	public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();

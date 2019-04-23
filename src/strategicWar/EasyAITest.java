@@ -6,6 +6,9 @@ import static org.junit.Assert.*;
 
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Designed to test the EasyAI class.
+ */
 public class EasyAITest {
     @Test
     public void testSelectBattleCard()

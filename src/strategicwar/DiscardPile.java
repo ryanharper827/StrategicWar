@@ -3,6 +3,9 @@ package strategicwar;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * Represents a pile of discarded cards in a WarGame.
+ */
 public class DiscardPile {
 	ArrayList<Card> pile;
 	/**
@@ -53,6 +56,7 @@ public class DiscardPile {
 	/**
 	 * Removes all cards from the DiscardPile and returns an ArrayList of Card objects.
 	 * For removing individual Cards, see removeCard
+	 * @return the cards the pile contains
 	 */
 	public ArrayList<Card> removeCards() {
 		ArrayList<Card> removed = new ArrayList<Card>();

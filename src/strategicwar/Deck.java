@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
+/**
+ * Represents a Deck of cards.
+ */
 public class Deck {
 	private ArrayList<Card> cards;
 

@@ -5,6 +5,9 @@ import javafx.scene.image.Image;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Represents a player's hand of cards in a WarGame.
+ */
 public class Hand {
 	
 	ArrayList<Card> hand;
@@ -40,7 +43,7 @@ public class Hand {
 
 	/**
 	 * Adds an array of cards to the hand
-	 * @param cards
+	 * @param cards the array of cards to be added
 	 */
 	public void addCards(Card[] cards)
 	{

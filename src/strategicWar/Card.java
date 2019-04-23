@@ -4,7 +4,6 @@ import java.util.Comparator;
 
 /**
  * Represents a standard card in a deck of playing cards.
- *
  */
 public class Card{
 	protected int suite;

@@ -53,7 +53,7 @@ public class GameGUIController implements WarGameObserver{
 
     /**
      * Set this instance's ApplicationController
-     * @param applicationController
+     * @param applicationController the ApplicationController instance
      */
     public void setApplicationController(ApplicationController applicationController)
     {
@@ -127,7 +127,7 @@ public class GameGUIController implements WarGameObserver{
 
     /**
      * Turns on and off the ability for the player to select cards in their hand
-     * @param active
+     * @param active the state of the player's ability to select cards
      */
     private void setSelectionActive(boolean active)
     {
@@ -149,7 +149,7 @@ public class GameGUIController implements WarGameObserver{
 
     /**
      * Handles when the mouse enters a selectable card image
-     * @param event
+     * @param event the mouse event
      */
     public void mouseEnteredCard(MouseEvent event)
     {
@@ -190,7 +190,7 @@ public class GameGUIController implements WarGameObserver{
 
     /**
      * Handles when the mouse exits a selectable card image
-     * @param event
+     * @param event the mouse event
      */
     public void mouseExitedCard(MouseEvent event)
     {
@@ -404,7 +404,7 @@ public class GameGUIController implements WarGameObserver{
 
     /**
      * Handles when the mouse clicks a selectable card image
-     * @param event
+     * @param event the mouse event
      */
     public void mouseClickedCard(MouseEvent event)
     {

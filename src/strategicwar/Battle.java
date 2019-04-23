@@ -2,10 +2,12 @@ package strategicwar;
 
 import java.util.ArrayList;
 
+/**
+ * Represents a battle in the WarGame.
+ */
 public class Battle {
-
-	Card playerCard;
-	Card aiCard;
+	protected Card playerCard;
+	protected Card aiCard;
 	
 	/**
 	 * Initializes the Battle with the player card and AI card

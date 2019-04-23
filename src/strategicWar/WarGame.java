@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 
 /**
- * Class that holds the state and variables of a game of Strategic War
+ * Class that holds the state and variables of a game of Strategic War.
  */
 public class WarGame {
 
@@ -45,7 +45,7 @@ public class WarGame {
 
     /**
      * Start the game
-     * @param difficulty
+     * @param difficulty the difficulty of the AI
      */
     public void start(int difficulty)
     {
@@ -73,7 +73,7 @@ public class WarGame {
 
     /**
      * Set the playing variable
-     * @param playing
+     * @param playing the playing state of the game
      */
     public void setPlaying(boolean playing)
     {
@@ -236,7 +236,7 @@ public class WarGame {
 
     /**
      * Called by the mouseClicked event with the index of the card clicked
-     * @param index
+     * @param index index of the card the player selected
      */
     public void playerSelectedCard(int index)
     {
@@ -410,6 +410,7 @@ public class WarGame {
     /**
      * ROUND END PHASE: End of a game round, distribute winnings and check win condition.
      * If no victor continue to draw phase.
+     * @param winner winner of the last battle or war
      */
     private void roundEndPhase(int winner)
     {
@@ -458,7 +459,7 @@ public class WarGame {
 
     /**
      * GAME OVER PHASE: End of the game, changes the Game Phase to either WinnerAI or WinnerPlayer
-     * @param winner
+     * @param winner winner of the game
      */
     private void gameOverPhase(int winner)
     {
@@ -514,7 +515,7 @@ public class WarGame {
 
     /**
      * Add an observer to the WarGame
-     * @param observer
+     * @param observer observer to add
      */
     public void addObserver(WarGameObserver observer)
     {

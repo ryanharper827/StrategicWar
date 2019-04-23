@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 //import org.junit.Rule;
 import org.junit.Test;
 
+/**
+ * Designed to test the RandomAI class.
+ */
 public class RandomAITest {
 	//@Rule
 	//public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();

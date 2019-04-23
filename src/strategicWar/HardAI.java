@@ -1,13 +1,15 @@
 package strategicwar;
 
-public class HardAI extends WarAI {
+/**
+ * HardAI that implements the WarAI interface.
+ */
+public class HardAI implements WarAI {
 
     /**
      * This AI selects the highest valued card to battle
      * @param hand AI's hand
      * @return Card
      */
-    @Override
     public Card selectBattleCard(Hand hand) {
         int highestValue = hand.getCardValue(0);
         int index = 0;
@@ -28,7 +30,6 @@ public class HardAI extends WarAI {
      * @param count Number of prizes
      * @return Prize Cards
      */
-    @Override
     public Card[] selectPrizeCards(Hand hand, int count) {
         Card[] prizes = new Card[count];
         for(int j = 0; j < count; j++)

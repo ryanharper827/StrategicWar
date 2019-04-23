@@ -5,6 +5,9 @@ import static org.junit.Assert.*;
 //import org.junit.Rule;
 import org.junit.Test;
 
+/**
+ * Desinged to test the HardAI class.
+ */
 public class HardAITest {
 	//@Rule
 	//public JavaFXThreadingRule jfxRule = new JavaFXThreadingRule();
