@@ -5,7 +5,7 @@ This repo chronicles the development of the game Strategic War.
 
 ### Run with JAR file
 
-Step 1) Click JAR file
+Step 1) Click JAR file</br>
 Step 2) Enjoy the game! :)
 
 ### Run with source code
