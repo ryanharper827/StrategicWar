@@ -1,5 +1,5 @@
 # StrategicWar
-This repo chronicles the development of the game Strategic War.
+Strategic War is a variant of the popular War card game where you use a 5 card hand instead of top decking. This is a JavaFX implementation.
 
 ## How to Run
 
